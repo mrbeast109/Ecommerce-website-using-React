@@ -7,6 +7,7 @@ import Login from "./Login";
 import New from "./New";
 import Signup from "./Signup";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export {
     About,
@@ -17,5 +18,6 @@ export {
     Login,
     New,
     Signup,
-    Navbar
+    Navbar,
+    Footer
 }

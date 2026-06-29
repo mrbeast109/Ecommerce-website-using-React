@@ -36,10 +36,10 @@ function Navbar() {
                 </ul>
             </div>
             <div className='w-1/2 text-center py-4 px-8 font-cinzel text-3xl'>
-                <h2 className='font-medium'><NavLink to="/">NOOR</NavLink></h2>
+                <h2 className='font-medium'><NavLink to="/">AZURE</NavLink></h2>
             </div>
             <div className='w-1/3 py-4 px-8'>
-                <ul className='flex gap-2 justify-end'>
+                <ul className='flex gap-4 justify-end'>
                     <li>
                         <NavLink to="/login" 
                             className={({ isActive }) =>
