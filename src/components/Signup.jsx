@@ -49,7 +49,7 @@ function Signup() {
         </div>
 
         <div
-          className='w-full md:w-1/2 flex flex-col justify-center px-10 py-14'
+          className='w-full md:w-1/2 flex flex-col justify-center px-6 py-10 md:px-10 md:py-14'
           style={{
             background: 'rgba(255, 255, 255, 0.12)',
             backdropFilter: 'blur(24px)',
@@ -59,12 +59,12 @@ function Signup() {
         >
           <NavLink
             to='/'
-            className='font-cinzel text-3xl font-bold tracking-widest text-white mb-8 block'
+            className='font-cinzel text-2xl md:text-3xl font-bold tracking-widest text-white mb-8 block'
           >
             AZURE
           </NavLink>
 
-          <h2 className='text-3xl font-bold font-montserrat text-white mb-1'>
+          <h2 className='text-2xl md:text-3xl font-bold font-montserrat text-white mb-1'>
             Create Account
           </h2>
           <p className='text-white/60 text-sm mb-8 font-montserrat'>
