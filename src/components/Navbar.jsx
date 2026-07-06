@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import {NavLink} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { useCart } from '../crartDrawer/CartContext'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { openCart, cartItems } = useCart()
+
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   const linkClass = ({ isActive }) =>
     `transition-colors duration-300 hover:text-[#D15A5C] ${isActive ? 'text-[#D15A5C]' : 'text-black'}`
@@ -40,13 +44,22 @@ function Navbar() {
         </div>
 
         <div className='hidden md:flex w-1/3 py-4 px-4 lg:px-8'>
-          <ul className='flex gap-3 lg:gap-4 justify-end w-full whitespace-nowrap'>
+          <ul className='flex gap-3 lg:gap-4 justify-end w-full whitespace-nowrap items-center'>
             <li><NavLink to="/login" className={linkClass}>LOG IN</NavLink></li>
             <li><NavLink to="/signup" className={linkClass}>SIGN UP</NavLink></li>
             <li>
-              <NavLink to="/cart" className={linkClass}>
+              <button
+                onClick={openCart}
+                className="relative text-black hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer"
+                aria-label="Open cart"
+              >
                 <FontAwesomeIcon icon={faCartShopping} />
-              </NavLink>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
             </li>
           </ul>
         </div>
@@ -70,9 +83,17 @@ function Navbar() {
           <hr className='border-gray-100' />
           <NavLink to="/login" className={linkClass} onClick={() => setMenuOpen(false)}>LOG IN</NavLink>
           <NavLink to="/signup" className={linkClass} onClick={() => setMenuOpen(false)}>SIGN UP</NavLink>
-          <NavLink to="/cart" className={linkClass} onClick={() => setMenuOpen(false)}>
-            CART <FontAwesomeIcon icon={faCartShopping} className='ml-1' />
-          </NavLink>
+          <button
+            onClick={() => { openCart(); setMenuOpen(false); }}
+            className="flex items-center gap-2 text-black hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer relative w-fit"
+          >
+            <FontAwesomeIcon icon={faCartShopping} /> CART
+            {totalItems > 0 && (
+              <span className="bg-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
         </div>
       )}
     </nav>

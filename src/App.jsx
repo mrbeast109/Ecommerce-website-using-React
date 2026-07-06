@@ -1,13 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
-import {Home, New, Collection, About, Login, Signup, Cart, Checkout, Navbar, Footer} from './components/index'
+import {Home, New, Collection, About, Login, Signup, Checkout, Navbar, Footer} from './components/index'
 import AuthProvider from './context/AuthContext';
+import { CartProvider } from './crartDrawer/CartContext';
+import CartDrawer from './crartDrawer/CartDrawer';
 
 function App() {
 
   return (
-      <AuthProvider>
+    <AuthProvider>
+      <CartProvider>
         <div>
           <Navbar />
+          <CartDrawer />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/newarrivals" element={<New />} />
@@ -15,12 +19,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
         </div>
-      </AuthProvider>
+      </CartProvider>
+    </AuthProvider>
   )
 }
 

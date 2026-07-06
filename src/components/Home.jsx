@@ -113,7 +113,7 @@ function Home() {
         </div>
         <div className='w-full lg:w-1/2 lg:h-[80vh] flex flex-col justify-between gap-6 lg:gap-0'>
           <div>
-            <h2 className="text-black text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-michroma italic leading-snug flex flex-col gap-2">
+            <h2 className="text-black text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif leading-snug flex flex-col gap-2">
               <span>/ Check Out</span>
               <span>Our Other</span>
               <span>Collection</span>

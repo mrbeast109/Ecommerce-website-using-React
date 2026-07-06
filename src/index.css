@@ -12,6 +12,11 @@
   --font-redrose: "Red Rose", serif;
 }
 
-html, body {
+html {
   overflow-x: hidden;
+}
+
+/* Hide scrollbar visually but keep scroll functional */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
 }

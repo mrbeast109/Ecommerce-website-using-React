@@ -1,48 +1,98 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import products from "../data/product";
 import ProductCard from "./ProductCard";
 
 export default function ProductSlider() {
-  const sliderRef = useRef();
+  const sliderRef = useRef(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
 
-  const next = () => {
-    sliderRef.current.scrollBy({
-      left: 350,
-      behavior: "smooth",
-    });
+  // Touch/swipe state
+  const touchStartX = useRef(null);
+  const touchStartScroll = useRef(null);
+
+  // Update button visibility based on scroll position
+  const updateButtons = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    setCanPrev(el.scrollLeft > 0);
+    setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
   };
 
-  const prev = () => {
-    sliderRef.current.scrollBy({
-      left: -350,
-      behavior: "smooth",
-    });
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    updateButtons();
+    el.addEventListener("scroll", updateButtons, { passive: true });
+    return () => el.removeEventListener("scroll", updateButtons);
+  }, []);
+
+  const scrollBy = (dir) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector(":scope > *")?.offsetWidth || 288;
+    el.scrollBy({ left: dir * (cardWidth + 24), behavior: "smooth" });
+  };
+
+  // Touch handlers for swipe support
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartScroll.current = sliderRef.current?.scrollLeft ?? 0;
+  };
+
+  const handleTouchMove = (e) => {
+    if (touchStartX.current === null) return;
+    const dx = touchStartX.current - e.touches[0].clientX;
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft = touchStartScroll.current + dx;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchStartX.current = null;
+    touchStartScroll.current = null;
   };
 
   return (
     <div className="relative">
+      {/* Prev Button */}
       <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 z-10 cursor-pointer text-3xl"
+        onClick={() => scrollBy(-1)}
+        disabled={!canPrev}
+        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center bg-white shadow-md border border-gray-200 rounded-full cursor-pointer text-xl transition-all duration-200 hover:bg-black hover:text-white -translate-x-1/2 ${
+          canPrev ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        aria-label="Previous"
       >
         ←
       </button>
 
+      {/* Slider Track */}
       <div
         ref={sliderRef}
-        className="flex gap-6 scroll-smooth overflow-x-hidden "
+        className="flex gap-6 overflow-x-auto scroll-smooth px-1"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          scrollSnapType: "x mandatory",
+        }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
+      {/* Next Button */}
       <button
-        onClick={next}
-        className="absolute right-4 top-1/2 z-10 cursor-pointer text-3xl"
+        onClick={() => scrollBy(1)}
+        disabled={!canNext}
+        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center bg-white shadow-md border border-gray-200 rounded-full cursor-pointer text-xl transition-all duration-200 hover:bg-black hover:text-white translate-x-1/2 ${
+          canNext ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        aria-label="Next"
       >
         →
       </button>
