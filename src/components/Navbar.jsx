@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
-import {NavLink} from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import {NavLink, useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useCart } from '../crartDrawer/CartContext'
+import { AuthContext } from '../context/AuthContext'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { openCart, cartItems } = useCart()
+  const { user, logout } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   const linkClass = ({ isActive }) =>
     `transition-colors duration-300 hover:text-[#D15A5C] ${isActive ? 'text-[#D15A5C]' : 'text-black'}`
+
+  function handleLogout() {
+    logout()
+    setMenuOpen(false)
+    navigate('/')
+  }
 
   return (
     <nav className='w-full bg-white shadow-sm font-montserrat text-sm font-semibold relative z-50'>
@@ -45,8 +54,21 @@ function Navbar() {
 
         <div className='hidden md:flex w-1/3 py-4 px-4 lg:px-8'>
           <ul className='flex gap-3 lg:gap-4 justify-end w-full whitespace-nowrap items-center'>
-            <li><NavLink to="/login" className={linkClass}>LOG IN</NavLink></li>
-            <li><NavLink to="/signup" className={linkClass}>SIGN UP</NavLink></li>
+            {user ? (
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className='tracking-widest text-xs border border-black px-3 py-1.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 cursor-pointer'
+                >
+                  LOG OUT
+                </button>
+              </li>
+            ) : (
+              <>
+                <li><NavLink to="/login" className={linkClass}>LOG IN</NavLink></li>
+                <li><NavLink to="/signup" className={linkClass}>SIGN UP</NavLink></li>
+              </>
+            )}
             <li>
               <button
                 onClick={openCart}
@@ -81,8 +103,19 @@ function Navbar() {
           <NavLink to="/collections" className={linkClass} onClick={() => setMenuOpen(false)}>COLLECTION</NavLink>
           <NavLink to="/about" className={linkClass} onClick={() => setMenuOpen(false)}>ABOUT</NavLink>
           <hr className='border-gray-100' />
-          <NavLink to="/login" className={linkClass} onClick={() => setMenuOpen(false)}>LOG IN</NavLink>
-          <NavLink to="/signup" className={linkClass} onClick={() => setMenuOpen(false)}>SIGN UP</NavLink>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className='text-left tracking-widest text-xs border border-black px-3 py-1.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 cursor-pointer w-fit'
+            >
+              LOG OUT
+            </button>
+          ) : (
+            <>
+              <NavLink to="/login" className={linkClass} onClick={() => setMenuOpen(false)}>LOG IN</NavLink>
+              <NavLink to="/signup" className={linkClass} onClick={() => setMenuOpen(false)}>SIGN UP</NavLink>
+            </>
+          )}
           <button
             onClick={() => { openCart(); setMenuOpen(false); }}
             className="flex items-center gap-2 text-black hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer relative w-fit"

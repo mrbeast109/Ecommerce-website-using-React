@@ -13,8 +13,7 @@ function AuthProvider({children}) {
     function signup(email, password){
         const users = JSON.parse(localStorage.getItem('users')) || [];
 
-        if (users.find(user => user.email == email)){
-            alert("User already exists");
+        if (users.find(user => user.email === email)){
             return {success: false, error: "User already exists"};
             
         }
@@ -25,6 +24,7 @@ function AuthProvider({children}) {
         localStorage.setItem('users', JSON.stringify(users));
         localStorage.setItem('currentUserEmail', email);
         setUser(newUser);
+        return { success: true };
     }
 
     function logout(){

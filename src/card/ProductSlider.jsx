@@ -7,11 +7,9 @@ export default function ProductSlider() {
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
 
-  // Touch/swipe state
   const touchStartX = useRef(null);
   const touchStartScroll = useRef(null);
 
-  // Update button visibility based on scroll position
   const updateButtons = () => {
     const el = sliderRef.current;
     if (!el) return;
@@ -34,7 +32,6 @@ export default function ProductSlider() {
     el.scrollBy({ left: dir * (cardWidth + 24), behavior: "smooth" });
   };
 
-  // Touch handlers for swipe support
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartScroll.current = sliderRef.current?.scrollLeft ?? 0;
@@ -55,7 +52,6 @@ export default function ProductSlider() {
 
   return (
     <div className="relative">
-      {/* Prev Button */}
       <button
         onClick={() => scrollBy(-1)}
         disabled={!canPrev}
@@ -67,7 +63,6 @@ export default function ProductSlider() {
         ←
       </button>
 
-      {/* Slider Track */}
       <div
         ref={sliderRef}
         className="flex gap-6 overflow-x-auto scroll-smooth px-1"
@@ -85,7 +80,6 @@ export default function ProductSlider() {
         ))}
       </div>
 
-      {/* Next Button */}
       <button
         onClick={() => scrollBy(1)}
         disabled={!canNext}

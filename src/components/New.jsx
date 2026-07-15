@@ -1,55 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useCart } from '../crartDrawer/CartContext'
 
 const newArrivals = [
   {
     id: 101,
-    name: "Linen Camp-Collar Shirt",
+    name: "Passage Funnelneck Jacket",
     price: 2499,
-    image: "https://image.hm.com/assets/hm/31/33/313364edabcdaa830553ac4fdb3cb0ce0e638d66.jpg?imwidth=384",
+    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/PassageBlackPackshotShopify.jpg?v=1778677633&width=1024&crop=center",
   },
   {
     id: 102,
-    name: "Relaxed Chino Shorts",
-    price: 1799,
-    image: "https://image.hm.com/assets/hm/db/58/db589210a7980be9abdcf5a7b00e4dd19bacb84a.jpg?imwidth=384",
+    name: "DalmaSuede Bomber",
+    price: 2799,
+    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/DalmaBarkSuedePackshotShopify.jpg?v=1778677429&width=1024&crop=center",
   },
   {
     id: 103,
-    name: "Printed Trucker Cap",
-    price: 899,
-    image: "https://image.hm.com/assets/hm/b5/4c/b54c2bf18455a6f3bf06e90ffa849211a3034f5b.jpg?imwidth=384",
+    name: "Coda Suede Wideleg Trouser",
+    price: 2899,
+    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/CodaPantsTobaccoSuedePackshotShopify.jpg?v=1778677493&width=1024&crop=center",
   },
   {
     id: 104,
-    name: "Essential Oversized Tee",
+    name: "Sash Belt Shearling",
     price: 999,
-    image: "https://image.hm.com/assets/hm/52/69/5269d146117fc782b5f1aa4e834fbe54450ab83e.jpg?imwidth=2160",
-  },
-  {
-    id: 105,
-    name: "Frill-Trimmed Dress",
-    price: 1599,
-    image: "https://image.hm.com/assets/hm/fb/30/fb302a57feaa1cd6a43783e1fbbdd3894dfa6732.jpg?imwidth=384",
-  },
-  {
-    id: 106,
-    name: "Resort Shirt — Navy",
-    price: 1499,
-    image: "https://image.hm.com/assets/hm/46/bf/46bf9a1915eff10996840159767b56c61eb3d98f.jpg?imwidth=2160",
-  },
-  {
-    id: 107,
-    name: "Relaxed Fit Resort Shirt",
-    price: 1499,
-    image: "https://image.hm.com/assets/hm/65/8b/658b5630bd1c416fd6a0ada1047b7c31565782de.jpg?imwidth=2160",
-  },
-  {
-    id: 108,
-    name: "DryMove™ Sports Top",
-    price: 2299,
-    image: "https://image.hm.com/assets/hm/ff/70/ff70849088fb64aeea67c721de2688965c85b743.jpg?imwidth=2160",
+    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SashBelt_Leopard_fb7cb914-aba6-4470-ae5f-f14b3ad4d223.jpg?v=1764947543&width=1024&crop=center",
   },
 ]
 
@@ -84,9 +60,8 @@ function NewArrivalCard({ product }) {
         </div>
         <button
           onClick={() => setWished(!wished)}
-          className={`text-lg mt-0.5 flex-shrink-0 transition-colors duration-200 cursor-pointer ${
-            wished ? 'text-red-500' : 'text-gray-300 hover:text-gray-600'
-          }`}
+          className={`text-lg mt-0.5 flex-shrink-0 transition-colors duration-200 cursor-pointer ${wished ? 'text-red-500' : 'text-gray-300 hover:text-gray-600'
+            }`}
           aria-label="Wishlist"
         >
           {wished ? '♥' : '♡'}
@@ -154,13 +129,59 @@ function New() {
         <p>Limited — Get Them Before They're Gone</p>
       </div>
 
+      <div className="px-6 md:px-10 py-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <div className="relative flex items-center justify-between rounded-2xl overflow-hidden bg-[#f5ede8] min-h-[300px]">
+          <div className="flex flex-col gap-3 px-8 py-8 max-w-[55%] z-10">
+            <h3 className="font-montserrat text-xl md:text-2xl font-semibold leading-snug text-gray-900">
+              Exclusive summer sale save more!
+            </h3>
+            <p className="font-montserrat text-xs text-gray-500 leading-relaxed">
+              Shop today and enjoy up to 40% off all outerwear and accessories!
+            </p>
+            <button className="self-start mt-1 flex items-center gap-2 border border-gray-800 rounded-full px-5 py-2 font-montserrat text-xs font-medium text-gray-800 hover:bg-gray-800 hover:text-white transition-colors duration-300 cursor-pointer">
+              Shop Comfort <span className="text-base leading-none">»</span>
+            </button>
+          </div>
+          <div className="absolute right-0 top-0 h-full w-[48%]">
+            <img
+              src="https://images.unsplash.com/photo-1718985342149-7178154e0aee?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Winter Sale"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+        </div>
+
+        <div className="relative flex items-center justify-between rounded-2xl overflow-hidden bg-[#e8eaf5] min-h-[200px]">
+          <div className="flex flex-col gap-3 px-8 py-8 max-w-[55%] z-10">
+            <h3 className="font-montserrat text-xl md:text-2xl font-semibold leading-snug text-gray-900">
+              Seasonal Sale – Up to 50% Off!
+            </h3>
+            <p className="font-montserrat text-xs text-gray-500 leading-relaxed">
+              Shop now and save up to 50% on selected styles.
+            </p>
+            <button className="self-start mt-1 flex items-center gap-2 border border-gray-800 rounded-full px-5 py-2 font-montserrat text-xs font-medium text-gray-800 hover:bg-gray-800 hover:text-white transition-colors duration-300 cursor-pointer">
+              Explore Fusion <span className="text-base leading-none">»</span>
+            </button>
+          </div>
+          <div className="absolute right-0 top-0 h-full w-[48%]">
+            <img
+              src="https://images.pexels.com/photos/10664739/pexels-photo-10664739.jpeg"
+              alt="Seasonal Sale"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+        </div>
+
+      </div>
+
       <div className="px-6 md:px-10 pt-10 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
         <div>
           <p className="font-michroma text-xs tracking-[0.3em] text-gray-400 uppercase mb-1">2026 Season</p>
           <h2 className="font-montserrat text-2xl md:text-4xl font-semibold">/ NEW ARRIVALS</h2>
         </div>
         <p className="font-montserrat text-sm text-gray-400 italic">
-          {newArrivals.length - 4} styles just landed
+          {newArrivals.length} styles just landed
         </p>
       </div>
 
@@ -172,32 +193,237 @@ function New() {
         </div>
       </div>
 
+      <div className="flex flex-col md:flex-row w-full md:h-[100vh] ">
 
-      <div className="relative w-full h-[50vw] md:h-[65vh] overflow-hidden mt-8">
-        <img
-          src="https://image.hm.com/assets/hm/49/32/49321ec27a9763b2a6896fc4616267bddf19917e.jpg?imwidth=2160"
-          alt="The New Edit"
-          className="w-full h-full object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-          <h2 className="text-white font-michroma text-3xl sm:text-5xl md:text-6xl font-light tracking-widest text-center px-4">
-            The New Edit
-          </h2>
-          <p className="text-white/75 font-montserrat text-sm md:text-base tracking-wider text-center max-w-md px-4">
-            Curated looks built for movement, mood and modern life.
-          </p>
-          <NavLink
-            to="/collections"
-            className="border border-white text-white font-michroma text-xs tracking-widest px-8 py-3 hover:bg-white hover:text-black transition-all duration-300"
-          >
-            SHOP ALL
-          </NavLink>
+        <div className="w-full md:w-1/2 h-[40vw] md:h-full overflow-hidden">
+          <img
+            src="https://cdn.sanity.io/images/h9gyalsq/production/f9859843118a067b553c38496d8e4e13b1ca125b-3000x4050.jpg?w=2560&q=70&auto=format"
+            alt="Bold Shape Editorial"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+
+        <div className="w-full md:w-1/2 flex flex-col justify-between bg-[#f7f7f5] px-6 md:px-10 py-6 gap-4">
+
+          <div className="grid grid-cols-2 gap-4">
+
+            <div className="flex flex-col gap-2 group cursor-pointer">
+              <div className="bg-white aspect-[3/4] flex items-center justify-center overflow-hidden">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Pia_Ivory_Packshot.jpg?v=1771002858&width=1920&crop=center"
+                  alt="Pia Leather Bomber"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div>
+                <p className="font-montserrat text-xs text-gray-800 leading-snug">Pia Leather Bomber</p>
+                <p className="font-montserrat text-xs text-gray-500 mt-0.5">$1,500</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 group cursor-pointer">
+              <div className="bg-white aspect-[3/4] flex items-center justify-center overflow-hidden">
+                <img
+                  src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=2160"
+                  alt="earings"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div>
+                <p className="font-montserrat text-xs text-gray-800 leading-snug">Gold Rose Earrings</p>
+                <p className="font-montserrat text-xs text-gray-500 mt-0.5">$350</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="flex flex-col gap- pt-4">
+            <p className="font-montserrat text-xs font-bold uppercase tracking-widest text-gray-900">
+              Bold Shape
+            </p>
+            <p className="font-montserrat text-xs text-gray-500 leading-relaxed max-w-sm">
+              The Pia Leather Bomber Jacket is a must-have for any wardrobe. Made with premium leather, it features a classic bomber silhouette with modern details.
+            </p>
+            <a
+              href="#"
+              className="font-montserrat text-xs text-gray-900 underline underline-offset-4 hover:text-black transition-colors duration-200 w-fit mt-1"
+            >
+              Shop Now
+            </a>
+          </div>
+
         </div>
       </div>
 
+      <div className="flex flex-col md:flex-row w-full h-[100vh]">
+
+        <div className="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group cursor-pointer">
+          <img
+            src="https://cdn.sanity.io/images/h9gyalsq/production/e6764026353c8b03b1a6006a076c06e20d4cdb9d-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
+            alt="Leather Gloves Editorial"
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          />
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 transition-colors duration-500" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-8 gap-3">
+            <p className="font-montserrat text-[10px] tracking-[0.35em] uppercase opacity-90 leading-relaxed">
+              A SILHOUETTE THAT<br />REMEMBERS YOU
+            </p>
+            <a
+              href="#"
+              className="font-montserrat text-xs tracking-wider underline underline-offset-4 hover:opacity-70 transition-opacity duration-200"
+            >
+              Shop Now
+            </a>
+          </div>
+        </div>
+
+        <div className="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group cursor-pointer">
+          <img
+            src="https://cdn.sanity.io/images/h9gyalsq/production/5446754df11c7d6cd05014b87ffa614f60b10e19-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
+            alt="Dark Leather Heels Editorial"
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-500" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-8 gap-3">
+            <p className="font-montserrat text-[10px] tracking-[0.35em] uppercase opacity-90 leading-relaxed">
+              NOTHING LOUD.<br />EVERYTHING INTENTIONAL
+            </p>
+            <a
+              href="#"
+              className="font-montserrat text-xs tracking-wider underline underline-offset-4 hover:opacity-70 transition-opacity duration-200"
+            >
+              Shop Now
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="relative flex flex-col md:flex-row w-full h-auto md:h-[80vh] overflow-hidden">
+
+        <div className="w-full md:w-1/2 h-[60vw] md:h-full flex items-center justify-center p-10 md:p-16">
+          <div className="relative w-full h-full max-w-lg max-h-[75vh] md:max-h-full">
+            <img
+              src="https://cdn.sanity.io/images/h9gyalsq/production/844f5c0326f0afd27fcafc2f0075e651e894d0f3-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
+              alt="Erra Atelier Leather Jacket"
+              className="w-full h-full object-contain drop-shadow-xl"
+            />
+          </div>
+        </div>
+
+        <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 pb-24 md:pb-20 gap-6">
+          <p className="font-montserrat text-[11px] tracking-[0.3em] uppercase text-gray-400">
+            The Atelier
+          </p>
+          <h2 className="font-montserrat text-2xl md:text-3xl font-light leading-snug text-gray-900 max-w-xs">
+            Designed with<br />
+            <span className="font-semibold italic">restraint,</span><br />
+            worn with intent.
+          </h2>
+          <p className="font-montserrat text-[13px] text-gray-500 leading-[1.9] max-w-sm">
+            Every piece we carry begins with a single question — does it last?
+            Not just in fabric and form, but in feeling. We curate garments built
+            on quiet confidence: clean lines, considered materials, and a silhouette
+            that moves with you. This is not fast fashion. This is your wardrobe,
+            refined — season after season, drop after drop.
+          </p>
+          <a
+            href="#"
+            className="font-montserrat text-xs tracking-widest uppercase text-gray-800 underline underline-offset-4 hover:opacity-60 transition-opacity duration-200 w-fit"
+          >
+            Explore the Collection
+          </a>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 px-8 py-4 border-t border-gray-300/60">
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">
+            Seasonal Selection
+          </span>
+          <span className="text-gray-300 text-xs">/</span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">
+            Garments &amp; Objects
+          </span>
+          <span className="text-gray-300 text-xs">/</span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">
+            2026
+          </span>
+        </div>
+
+      </div>
+
+      <div className="relative w-full bg-white overflow-hidden select-none" style={{ height: '520px' }}>
+
+        <div className="absolute overflow-hidden shadow-sm"
+          style={{ top: '8%', left: '3%', width: '14vw', maxWidth: '205px', minWidth: '100px', aspectRatio: '4/3', transform: 'rotate(-2deg)' }}>
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/a4c9a17765852bc7cba555f8600a78a32beff827-1000x650.jpg?w=420&q=70&auto=format"
+            alt="ig-1" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="absolute overflow-hidden shadow-sm"
+          style={{ top: '4%', left: '19%', width: '10vw', maxWidth: '200px', minWidth: '80px', aspectRatio: '3/4', transform: 'rotate(1.5deg)' }}>
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/2067d46cc16af606794b4fdf64f1d97177326db2-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
+            alt="ig-2" className="w-full h-full object-cover object-top" />
+        </div>
+
+        <div className="absolute overflow-hidden shadow-sm"
+          style={{ bottom: '10%', left: '8%', width: '11vw', maxWidth: '220px', minWidth: '75px', aspectRatio: '1/1', transform: 'rotate(2deg)' }}>
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/9b48c86cab21b7525f7f2bda03136687e608777a-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
+            alt="ig-3" className="w-full h-full object-cover object-top" />
+        </div>
+
+        <div className="absolute overflow-hidden shadow-sm"
+          style={{ top: '4%', right: '3%', width: '20vw', maxWidth: '320px', minWidth: '120px', aspectRatio: '4/3', transform: 'rotate(1deg)' }}>
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/344d660f9663e9f005cdaaf3e5ac501a26457e4c-8000x4278.jpg?w=1920&q=70&auto=format"
+            alt="ig-4" className="w-full h-full object-cover object-center" />
+        </div>
+
+        <div className="absolute overflow-hidden shadow-sm"
+          style={{ top: '12%', right: '23%', width: '11vw', maxWidth: '205px', minWidth: '95px', aspectRatio: '3/4', transform: 'rotate(-1.5deg)' }}>
+          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ-hwavaTPuqfAmpH-DYm9Sw0KXM5qGV-WjYrdUIiDpVvkIFcP2"
+            alt="ig-5" className="w-full h-full object-cover object-top" />
+        </div>
+
+        <div className="absolute overflow-hidden shadow-sm"
+          style={{ bottom: '8%', right: '20%', width: '10vw', maxWidth: '150px', minWidth: '70px', aspectRatio: '1/1', transform: 'rotate(-2.5deg)' }}>
+          <img src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=400"
+            alt="ig-6" className="w-full h-full object-cover object-center" />
+        </div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center z-10">
+
+          <svg width="72" height="52" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="2"  y1="48" x2="16" y2="4"  stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+            <line x1="16" y1="4"  x2="30" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+            <line x1="8"  y1="30" x2="24" y2="30" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+            <line x1="40" y1="4"  x2="68" y2="4"  stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+            <line x1="68" y1="4"  x2="40" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+            <line x1="40" y1="48" x2="68" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+          </svg>
+
+          <div className="flex items-center gap-3 mt-1">
+            <div className="w-10 h-px bg-gray-300" />
+            <p className="font-montserrat text-[10px] tracking-[0.32em] uppercase font-bold text-gray-900">
+              Follow Our Instagram
+            </p>
+            <div className="w-10 h-px bg-gray-300" />
+          </div>
+
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-montserrat text-[10px] tracking-[0.25em] text-gray-400 hover:text-gray-800 transition-colors duration-300 uppercase"
+          >
+            @AZURE.STORE
+          </a>
+        </div>
+
+      </div>
+
     </div>
+
   )
+
 }
 
-export default New
+export default New;

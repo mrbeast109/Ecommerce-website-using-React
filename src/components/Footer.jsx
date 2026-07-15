@@ -1,42 +1,189 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
+
+const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID'
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
+const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'YOUR_PUBLIC_KEY'
 
 function Footer() {
-    return (
-        <div className='w-full h-auto bg-[#261200]'>
-            <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 lg:gap-16 py-10 px-8 md:px-10 lg:px-16'>
-                <div>
-                    <h2 className='text-xl md:text-2xl text-[#DFDDD6] font-michroma italic'>/ FAST LINKS</h2>
-                    <div className='text-[#DFDDD6] mt-4 font-semibold'>
-                        <ul className='flex flex-wrap gap-4 text-base md:text-lg'>
-                            <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/newarrivals">New Arrivals</NavLink></li>
-                            <li><NavLink to="/collections">Collections</NavLink></li>
-                            <li><NavLink to="/about">About</NavLink></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <h2 className='text-xl md:text-2xl text-[#DFDDD6] font-michroma italic'>/ CONTACT US</h2>
-                    <div className='text-[#DFDDD6] mt-4 font-semibold flex flex-col gap-2 text-base md:text-lg'>
-                        <p>Email: azure90@gmail.com</p>
-                        <p>Phone: +123456789</p>
-                    </div>
-                </div>
-                <div>
-                    <h2 className='text-lg md:text-xl text-[#DFDDD6] font-michroma italic whitespace-nowrap'>/ SOCIAL MEDIA</h2>
-                    <div className='text-[#DFDDD6] mt-4 font-semibold flex flex-row gap-3 text-sm md:text-base flex-wrap'>
-                        <NavLink to="https://www.instagram.com/">Instagram</NavLink>
-                        <NavLink to="https://www.facebook.com/">Facebook</NavLink>
-                        <NavLink to="https://www.twitter.com/">Twitter</NavLink>
-                    </div>
-                </div>
-            </div>
-            <div className='w-full flex items-center justify-center py-3 bg-[#200D01]'>
-                <h2 className='text-sm md:text-lg text-[#4C3A32] font-michroma'>AZURE © 2026</h2>
-            </div>
+  const [email,  setEmail]  = useState('')
+  const [status, setStatus] = useState('idle')
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!email) return
+    setStatus('loading')
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name:    email,
+          time:    new Date().toLocaleString('en-IN', {
+                     dateStyle: 'medium',
+                     timeStyle: 'short',
+                   }),
+          message: `New newsletter subscription from ${email}`,
+        },
+        PUBLIC_KEY
+      )
+      setStatus('success')
+      setEmail('')
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch (err) {
+      console.error('EmailJS error — status:', err?.status)
+      console.error('EmailJS error — text:',   err?.text)
+      console.error('EmailJS full error:',      err)
+
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
+  }
+
+  return (
+    <footer className="w-full bg-[#f7f6f3] border-t border-gray-200">
+
+      <div className="w-full px-8 md:px-14 pt-14 pb-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
+
+        <div className="flex flex-col gap-3">
+          <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-1">Shop</p>
+          {['Shoes', 'Bags', 'Clothing', 'New in'].map(item => (
+            <NavLink
+              key={item}
+              to="/newarrivals"
+              className="font-montserrat text-sm text-gray-800 hover:text-black transition-colors duration-200 w-fit"
+            >
+              {item}
+            </NavLink>
+          ))}
         </div>
-    )
+
+        <div className="flex flex-col gap-3">
+          <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-1">Company</p>
+          {['About Us', 'Loyalty Program', 'Contact Us', 'The Journal'].map(item => (
+            <NavLink
+              key={item}
+              to="/"
+              className="font-montserrat text-sm text-gray-800 hover:text-black transition-colors duration-200 w-fit"
+            >
+              {item}
+            </NavLink>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-1">Support</p>
+          {['Warranty & Exchange', 'FAQ', 'Payment & Delivery'].map(item => (
+            <NavLink
+              key={item}
+              to="/"
+              className="font-montserrat text-sm text-gray-800 hover:text-black transition-colors duration-200 w-fit"
+            >
+              {item}
+            </NavLink>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-1">Socials</p>
+          {[
+            { label: 'TikTok',    href: 'https://www.tiktok.com/' },
+            { label: 'Instagram', href: 'https://www.instagram.com/' },
+            { label: 'Pinterest', href: 'https://www.pinterest.com/' },
+          ].map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className="font-montserrat text-sm text-gray-800 hover:text-black transition-colors duration-200 w-fit"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 col-span-2 sm:col-span-1">
+          <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-1">Newsletter</p>
+          <p className="font-montserrat text-sm text-gray-500 leading-relaxed max-w-[220px]">
+            Sign up to receive news about collections, events and sales.
+          </p>
+
+          {status === 'success' && (
+            <p className="font-montserrat text-xs text-green-600 flex items-center gap-1.5">
+              <span>✓</span> You're subscribed!
+            </p>
+          )}
+
+          {status === 'error' && (
+            <p className="font-montserrat text-xs text-red-500">
+              Something went wrong. Try again.
+            </p>
+          )}
+
+          {status !== 'success' && (
+            <form
+              onSubmit={handleSubmit}
+              className="mt-1 flex items-center border-b border-gray-400 pb-1 gap-2 max-w-[260px]"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+                disabled={status === 'loading'}
+                className="flex-1 bg-transparent font-montserrat text-sm text-gray-800 placeholder-gray-400 outline-none disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                disabled={status === 'loading'}
+                className="text-gray-700 hover:text-black transition-colors duration-200 text-base leading-none cursor-pointer disabled:opacity-40"
+              >
+                {status === 'loading' ? (
+                  <span className="inline-block w-3.5 h-3.5 border-2 border-gray-400 border-t-gray-800 rounded-full animate-spin" />
+                ) : (
+                  '→'
+                )}
+              </button>
+            </form>
+          )}
+        </div>
+
+      </div>
+
+      <div className="w-full px-4 md:px-8 overflow-hidden select-none">
+        <h2
+          className="font-montserrat font-bold leading-none tracking-tight text-gray-900 whitespace-nowrap"
+          style={{ fontSize: 'clamp(3rem, 12vw, 10rem)' }}
+        >
+          AZURE
+        </h2>
+      </div>
+
+      <div className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between px-8 md:px-14 py-5 mt-2 border-t border-gray-200 gap-2">
+        <div className="flex items-center gap-6">
+          <NavLink
+            to="/"
+            className="font-montserrat text-xs text-gray-500 hover:text-black transition-colors duration-200"
+          >
+            Privacy Policy
+          </NavLink>
+          <NavLink
+            to="/"
+            className="font-montserrat text-xs text-gray-500 hover:text-black transition-colors duration-200"
+          >
+            Terms &amp; Conditions
+          </NavLink>
+        </div>
+        <p className="font-montserrat text-xs text-gray-400">2026 © AZURE</p>
+      </div>
+
+    </footer>
+  )
 }
 
 export default Footer

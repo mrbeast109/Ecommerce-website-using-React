@@ -6,17 +6,25 @@ function Home() {
   return (
     <div className=''>
 
-      <div className='block lg:hidden w-full h-[130vw] sm:h-[100vw] md:h-[80vw] bg-no-repeat bg-cover bg-top relative'
-        style={{ backgroundImage: "url('https://image.hm.com/content/dam/global_campaigns/season_00/ladies/2020/launch/2020-CPD-8-hm-studio-holiday-capsule.jpg?imwidth=4800')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <div className='relative w-full h-[100vw] sm:h-[80vw] lg:h-[95vh] overflow-hidden'>
+        <video
+          src="https://stream.mux.com/7zDa52XgoxxCk7zCnQWGs5Uv1AA801vCAV166r02L8m014/high.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className='absolute inset-0 w-full h-full object-cover object-center'
+        />
+        <div className='absolute inset-0 bg-black/25' />
+        <div className='absolute bottom-10 left-8 text-white'>
+          <p className='font-michroma text-xs tracking-[0.3em] uppercase mb-3 opacity-80'>New Season — 2026</p>
+          <h1 className='font-michroma text-3xl sm:text-4xl md:text-5xl leading-tight font-light'>
+            / Wear What<br />
+            <span className='font-redrose italic font-semibold'>Feels Right</span>
+          </h1>
+        </div>
       </div>
 
-      <div className='hidden lg:block w-full h-[95vh] bg-no-repeat bg-cover bg-center relative bg-position-[center_2%]'
-        style={{ backgroundImage: "url('https://image.hm.com/content/dam/global_campaigns/season_03/seo-article/2063/2063-16x9-CPD-2-studio-ss26-seo-article.jpg?imwidth=4800')" }}
-      >
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-      </div>
 
       <div className='flex flex-col md:flex-row justify-between items-center px-7 py-4 font-michroma text-sm md:text-md font-semibold italic gap-1 md:gap-0'>
         <p>Style That Represent Freedom</p>

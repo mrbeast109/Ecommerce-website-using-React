@@ -7,19 +7,21 @@ import {AuthContext} from '../context/AuthContext'
 function Signup() {
   const [showPassword, setShowPassword] = useState(false)
   const [mode,setMode] = useState('signup');
+  const [successMsg, setSuccessMsg] = useState(false);
   const {signup, user, logout, login} = useContext(AuthContext);
 
   const {register, handleSubmit, formState:{errors}} = useForm();
 
   function onSubmit(data){
-
     if(mode === "signup"){
-      signup(data.email, data.password);
+      const result = signup(data.email, data.password);
+      if(result?.success){
+        setSuccessMsg(true);
+        setTimeout(() => setSuccessMsg(false), 3500);
+      }
     }else{
       login(data.email, data.password);
     }
-
-    signup(data.email, data.password);
   }
 
   return (
@@ -71,7 +73,28 @@ function Signup() {
             Sign up to get started
           </p>
 
+          {successMsg && (
+            <div
+              className='flex items-center gap-2 mb-4 px-4 py-3 rounded-xl text-sm font-montserrat font-medium text-white'
+              style={{
+                background: 'rgba(34,197,94,0.25)',
+                border: '1px solid rgba(34,197,94,0.5)',
+                animation: 'toastIn 0.35s ease forwards',
+              }}
+            >
+              <style>{`
+                @keyframes toastIn {
+                  from { opacity: 0; transform: translateY(-8px); }
+                  to   { opacity: 1; transform: translateY(0); }
+                }
+              `}</style>
+              <span className='text-base'>✓</span>
+              Account created successfully!
+            </div>
+          )}
+
           <form className='flex flex-col gap-5' onSubmit={handleSubmit(onSubmit)}>
+
 
             <div className='flex flex-col gap-1.5'>
               <label
