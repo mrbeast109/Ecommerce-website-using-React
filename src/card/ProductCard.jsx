@@ -1,16 +1,19 @@
-import { useCart } from "../crartDrawer/CartContext";
+import { Link } from 'react-router-dom'
+import { useCart } from '../crartDrawer/CartContext'
 
 function ProductCard({ product }) {
-  const { addToCart } = useCart();
+  const { addToCart } = useCart()
 
   return (
-    <div className="w-72 flex-shrink-0 group cursor-pointer" style={{ scrollSnapAlign: "start" }}>
+    <div className="w-72 flex-shrink-0 group cursor-pointer" style={{ scrollSnapAlign: 'start' }}>
       <div className="overflow-hidden relative">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-96 object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
-        />
+        <Link to={`/product/${product.id}`}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-96 object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
+          />
+        </Link>
         {/* Add to cart overlay button */}
         <button
           onClick={() => addToCart(product)}
@@ -20,10 +23,14 @@ function ProductCard({ product }) {
         </button>
       </div>
 
-      <h2 className="mt-2 text-sm font-montserrat font-medium">{product.name}</h2>
-      <p className="text-sm text-gray-600 font-montserrat">₹{product.price.toLocaleString()}</p>
+      <Link to={`/product/${product.id}`}>
+        <h2 className="mt-2 text-sm font-montserrat font-medium hover:underline">{product.name}</h2>
+      </Link>
+      <p className="text-sm text-gray-600 font-montserrat">
+        {product.price > 500 ? `₹${product.price.toLocaleString()}` : `$${product.price}.00`}
+      </p>
     </div>
-  );
+  )
 }
 
-export default ProductCard;
+export default ProductCard

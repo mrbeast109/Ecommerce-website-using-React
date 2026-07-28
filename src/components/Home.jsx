@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import ProductSlider from "../card/ProductSlider";
+import ProductSlider from "../card/ProductSlider"
 
 function Home() {
   return (
@@ -25,7 +25,6 @@ function Home() {
         </div>
       </div>
 
-
       <div className='flex flex-col md:flex-row justify-between items-center px-7 py-4 font-michroma text-sm md:text-md font-semibold italic gap-1 md:gap-0'>
         <p>Style That Represent Freedom</p>
         <p>Style That Represent You</p>
@@ -35,10 +34,7 @@ function Home() {
         <NavLink to="/">
           <div
             className="relative h-[60vw] md:h-full bg-cover bg-position-[center_1%]"
-            style={{
-              backgroundImage:
-                "url('https://assets.vogue.com/photos/66eb398d0c166b7e67f3acc4/master/w_1920,c_limit/...')",
-            }}
+            style={{ backgroundImage: "url('https://assets.vogue.com/photos/66eb398d0c166b7e67f3acc4/master/w_1920,c_limit/...')" }}
           >
             <div className="absolute top-[80%] left-[20%] -translate-x-1/2 bg-white flex items-center shadow">
               <span className="px-3 py-1 font-medium">₹2299</span>
@@ -50,10 +46,7 @@ function Home() {
         <NavLink to="/">
           <div
             className="relative h-[60vw] md:h-full bg-cover bg-position-[center_14%]"
-            style={{
-              backgroundImage:
-                "url('https://image.hm.com/content/dam/global_campaigns/season_03/men/start-page-assets/wk26/MF05263P22-4x5-startpage-wk26.jpg?imwidth=1024')",
-            }}
+            style={{ backgroundImage: "url('https://image.hm.com/content/dam/global_campaigns/season_03/men/start-page-assets/wk26/MF05263P22-4x5-startpage-wk26.jpg?imwidth=1024')" }}
           >
             <div className="absolute top-[20%] right-[8%] bg-white flex items-center shadow">
               <span className="px-3 py-1 font-medium">₹2399</span>
@@ -80,36 +73,36 @@ function Home() {
 
       <h2 className='font-montserrat text-2xl md:text-4xl px-6 md:px-10 pt-10 mb-8 mt-8'>/ OUR PRODUCTS</h2>
       <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 md:grid-rows-2 h-auto md:h-screen gap-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2 h-auto lg:h-screen gap-0">
 
-          <div className="sm:col-span-1 md:col-span-3 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] md:h-full">
+          <div className="sm:col-span-1 lg:col-span-3 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] lg:h-full">
             <img src='https://image.hm.com/assets/hm/49/32/49321ec27a9763b2a6896fc4616267bddf19917e.jpg?imwidth=2160' className="w-full h-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-110" />
             <div className='absolute inset-0 bg-black opacity-20 z-10 group-hover:opacity-0 transition duration-300'></div>
-            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl z-20">Top Wear</h2>
+            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl z-20">Top Wear</h2>
           </div>
 
-          <div className="sm:col-span-1 md:col-span-3 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] md:h-full">
+          <div className="sm:col-span-1 lg:col-span-3 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] lg:h-full">
             <img src='https://image.hm.com/assets/hm/00/63/00636aff43ec9813fc4c586d4230b10a657bd7a0.jpg?imwidth=2160' className="w-full h-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-110" />
             <div className='absolute inset-0 bg-black opacity-20 group-hover:opacity-0 transition duration-300'></div>
-            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Bottoms</h2>
+            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl">Bottoms</h2>
           </div>
 
-          <div className="sm:col-span-1 md:col-span-2 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] md:h-full">
+          <div className="sm:col-span-1 lg:col-span-2 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] lg:h-full">
             <img src='https://image.hm.com/assets/hm/b5/4c/b54c2bf18455a6f3bf06e90ffa849211a3034f5b.jpg?imwidth=2160' className="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105 group-hover:brightness-110" />
             <div className='absolute inset-0 bg-black opacity-20 group-hover:opacity-0 transition duration-300'></div>
-            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Summer Wear</h2>
+            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl">Summer Wear</h2>
           </div>
 
-          <div className="sm:col-span-1 md:col-span-2 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] md:h-full">
+          <div className="sm:col-span-1 lg:col-span-2 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] lg:h-full">
             <img src='https://image.hm.com/assets/hm/1e/b3/1eb362511cb6223b9939b3a51b92dfab7d5c85b8.jpg?imwidth=2160' className="w-full h-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-110" />
             <div className='absolute inset-0 bg-black opacity-20 group-hover:opacity-0 transition duration-300'></div>
-            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Winter Wear</h2>
+            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl">Winter Wear</h2>
           </div>
 
-          <div className="sm:col-span-2 md:col-span-2 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] md:h-full">
+          <div className="sm:col-span-2 lg:col-span-2 relative cursor-pointer overflow-hidden group h-[60vw] sm:h-[45vw] lg:h-full">
             <img src='https://image.hm.com/assets/hm/15/de/15debb2c68d4b1e9f3ef7ef16768b65818f94e89.jpg?imwidth=2160' className="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105 group-hover:brightness-110" />
             <div className='absolute inset-0 bg-black opacity-20 group-hover:opacity-0 transition duration-300'></div>
-            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Accessories</h2>
+            <h2 className="absolute inset-0 flex items-center justify-center text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl">Accessories</h2>
           </div>
 
         </div>

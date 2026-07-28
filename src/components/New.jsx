@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
 import { useCart } from '../crartDrawer/CartContext'
 
 const newArrivals = [
@@ -36,11 +36,13 @@ function NewArrivalCard({ product }) {
   return (
     <div className="flex flex-col group cursor-pointer">
       <div className="relative overflow-hidden bg-[#f5f5f3] aspect-[3/4]">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-in-out p-2"
-        />
+        <Link to={`/product/${product.id}`}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-in-out p-2"
+          />
+        </Link>
         <button
           onClick={() => addToCart(product)}
           className="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-[11px] font-montserrat font-semibold py-3 tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer hover:bg-black"
@@ -50,18 +52,15 @@ function NewArrivalCard({ product }) {
       </div>
 
       <div className="flex items-start justify-between mt-1 px-0.5">
-        <div className="flex flex-col gap-0.5">
+        <Link to={`/product/${product.id}`} className="flex flex-col gap-0.5 hover:underline">
           <h3 className="font-montserrat text-xs sm:text-sm font-medium text-gray-900 leading-snug">
             {product.name}
           </h3>
-          <p className="font-montserrat text-xs text-gray-500">
-            ₹{product.price.toLocaleString()}
-          </p>
-        </div>
+          <p className="font-montserrat text-xs text-gray-500">₹{product.price.toLocaleString()}</p>
+        </Link>
         <button
           onClick={() => setWished(!wished)}
-          className={`text-lg mt-0.5 flex-shrink-0 transition-colors duration-200 cursor-pointer ${wished ? 'text-red-500' : 'text-gray-300 hover:text-gray-600'
-            }`}
+          className={`text-lg mt-0.5 flex-shrink-0 transition-colors duration-200 cursor-pointer ${wished ? 'text-red-500' : 'text-gray-300 hover:text-gray-600'}`}
           aria-label="Wishlist"
         >
           {wished ? '♥' : '♡'}
@@ -86,15 +85,11 @@ function New() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
           <div className="absolute bottom-10 left-8 text-white">
-            <p className="font-michroma text-xs tracking-[0.3em] uppercase mb-3 opacity-80">
-              New Arrivals — 2026
-            </p>
+            <p className="font-michroma text-xs tracking-[0.3em] uppercase mb-3 opacity-80">New Arrivals — 2026</p>
             <h1 className="font-michroma text-3xl sm:text-4xl md:text-5xl leading-tight font-light">
               / Wear What
               <br />
-              <span className="font-redrose italic font-semibold">
-                Feels Right
-              </span>
+              <span className="font-redrose italic font-semibold">Feels Right</span>
             </h1>
             <p className="font-montserrat text-sm mt-4 opacity-75 tracking-wider max-w-xs">
               Pieces crafted for the moment you stop blending in.
@@ -111,13 +106,9 @@ function New() {
           <div className="absolute inset-0 bg-black/10" />
 
           <div className="absolute top-8 right-8 text-right text-white">
-            <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase opacity-70 mb-1">
-              2026
-            </p>
+            <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase opacity-70 mb-1">2026</p>
             <p className="font-michroma text-lg md:text-xl leading-tight font-semibold tracking-wider">
-              SUMMER
-              <br />
-              COLLECTION
+              SUMMER<br />COLLECTION
             </p>
           </div>
         </div>
@@ -193,7 +184,7 @@ function New() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row w-full md:h-[100vh] ">
+      <div className="flex flex-col md:flex-row w-full md:h-[100vh]">
 
         <div className="w-full md:w-1/2 h-[40vw] md:h-full overflow-hidden">
           <img
@@ -225,7 +216,7 @@ function New() {
               <div className="bg-white aspect-[3/4] flex items-center justify-center overflow-hidden">
                 <img
                   src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=2160"
-                  alt="earings"
+                  alt="Gold Rose Earrings"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -237,17 +228,12 @@ function New() {
 
           </div>
 
-          <div className="flex flex-col gap- pt-4">
-            <p className="font-montserrat text-xs font-bold uppercase tracking-widest text-gray-900">
-              Bold Shape
-            </p>
+          <div className="flex flex-col gap-2 pt-4">
+            <p className="font-montserrat text-xs font-bold uppercase tracking-widest text-gray-900">Bold Shape</p>
             <p className="font-montserrat text-xs text-gray-500 leading-relaxed max-w-sm">
               The Pia Leather Bomber Jacket is a must-have for any wardrobe. Made with premium leather, it features a classic bomber silhouette with modern details.
             </p>
-            <a
-              href="#"
-              className="font-montserrat text-xs text-gray-900 underline underline-offset-4 hover:text-black transition-colors duration-200 w-fit mt-1"
-            >
+            <a href="#" className="font-montserrat text-xs text-gray-900 underline underline-offset-4 hover:text-black transition-colors duration-200 w-fit mt-1">
               Shop Now
             </a>
           </div>
@@ -268,10 +254,7 @@ function New() {
             <p className="font-montserrat text-[10px] tracking-[0.35em] uppercase opacity-90 leading-relaxed">
               A SILHOUETTE THAT<br />REMEMBERS YOU
             </p>
-            <a
-              href="#"
-              className="font-montserrat text-xs tracking-wider underline underline-offset-4 hover:opacity-70 transition-opacity duration-200"
-            >
+            <a href="#" className="font-montserrat text-xs tracking-wider underline underline-offset-4 hover:opacity-70 transition-opacity duration-200">
               Shop Now
             </a>
           </div>
@@ -288,10 +271,7 @@ function New() {
             <p className="font-montserrat text-[10px] tracking-[0.35em] uppercase opacity-90 leading-relaxed">
               NOTHING LOUD.<br />EVERYTHING INTENTIONAL
             </p>
-            <a
-              href="#"
-              className="font-montserrat text-xs tracking-wider underline underline-offset-4 hover:opacity-70 transition-opacity duration-200"
-            >
+            <a href="#" className="font-montserrat text-xs tracking-wider underline underline-offset-4 hover:opacity-70 transition-opacity duration-200">
               Shop Now
             </a>
           </div>
@@ -312,9 +292,7 @@ function New() {
         </div>
 
         <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 pb-24 md:pb-20 gap-6">
-          <p className="font-montserrat text-[11px] tracking-[0.3em] uppercase text-gray-400">
-            The Atelier
-          </p>
+          <p className="font-montserrat text-[11px] tracking-[0.3em] uppercase text-gray-400">The Atelier</p>
           <h2 className="font-montserrat text-2xl md:text-3xl font-light leading-snug text-gray-900 max-w-xs">
             Designed with<br />
             <span className="font-semibold italic">restraint,</span><br />
@@ -327,26 +305,20 @@ function New() {
             that moves with you. This is not fast fashion. This is your wardrobe,
             refined — season after season, drop after drop.
           </p>
-          <a
-            href="#"
+          <NavLink
+            to="/collections"
             className="font-montserrat text-xs tracking-widest uppercase text-gray-800 underline underline-offset-4 hover:opacity-60 transition-opacity duration-200 w-fit"
           >
             Explore the Collection
-          </a>
+          </NavLink>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 px-8 py-4 border-t border-gray-300/60">
-          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">
-            Seasonal Selection
-          </span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">Seasonal Selection</span>
           <span className="text-gray-300 text-xs">/</span>
-          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">
-            Garments &amp; Objects
-          </span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">Garments &amp; Objects</span>
           <span className="text-gray-300 text-xs">/</span>
-          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">
-            2026
-          </span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">2026</span>
         </div>
 
       </div>
@@ -355,42 +327,35 @@ function New() {
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '8%', left: '3%', width: '14vw', maxWidth: '205px', minWidth: '100px', aspectRatio: '4/3', transform: 'rotate(-2deg)' }}>
-          <img src="https://cdn.sanity.io/images/h9gyalsq/production/a4c9a17765852bc7cba555f8600a78a32beff827-1000x650.jpg?w=420&q=70&auto=format"
-            alt="ig-1" className="w-full h-full object-cover" />
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/a4c9a17765852bc7cba555f8600a78a32beff827-1000x650.jpg?w=420&q=70&auto=format" alt="ig-1" className="w-full h-full object-cover" />
         </div>
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '4%', left: '19%', width: '10vw', maxWidth: '200px', minWidth: '80px', aspectRatio: '3/4', transform: 'rotate(1.5deg)' }}>
-          <img src="https://cdn.sanity.io/images/h9gyalsq/production/2067d46cc16af606794b4fdf64f1d97177326db2-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
-            alt="ig-2" className="w-full h-full object-cover object-top" />
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/2067d46cc16af606794b4fdf64f1d97177326db2-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format" alt="ig-2" className="w-full h-full object-cover object-top" />
         </div>
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ bottom: '10%', left: '8%', width: '11vw', maxWidth: '220px', minWidth: '75px', aspectRatio: '1/1', transform: 'rotate(2deg)' }}>
-          <img src="https://cdn.sanity.io/images/h9gyalsq/production/9b48c86cab21b7525f7f2bda03136687e608777a-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format"
-            alt="ig-3" className="w-full h-full object-cover object-top" />
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/9b48c86cab21b7525f7f2bda03136687e608777a-3000x4050.jpg?rect=150,0,2700,4050&w=768&h=1152&q=70&auto=format" alt="ig-3" className="w-full h-full object-cover object-top" />
         </div>
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '4%', right: '3%', width: '20vw', maxWidth: '320px', minWidth: '120px', aspectRatio: '4/3', transform: 'rotate(1deg)' }}>
-          <img src="https://cdn.sanity.io/images/h9gyalsq/production/344d660f9663e9f005cdaaf3e5ac501a26457e4c-8000x4278.jpg?w=1920&q=70&auto=format"
-            alt="ig-4" className="w-full h-full object-cover object-center" />
+          <img src="https://cdn.sanity.io/images/h9gyalsq/production/344d660f9663e9f005cdaaf3e5ac501a26457e4c-8000x4278.jpg?w=1920&q=70&auto=format" alt="ig-4" className="w-full h-full object-cover object-center" />
         </div>
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '12%', right: '23%', width: '11vw', maxWidth: '205px', minWidth: '95px', aspectRatio: '3/4', transform: 'rotate(-1.5deg)' }}>
-          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ-hwavaTPuqfAmpH-DYm9Sw0KXM5qGV-WjYrdUIiDpVvkIFcP2"
-            alt="ig-5" className="w-full h-full object-cover object-top" />
+          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ-hwavaTPuqfAmpH-DYm9Sw0KXM5qGV-WjYrdUIiDpVvkIFcP2" alt="ig-5" className="w-full h-full object-cover object-top" />
         </div>
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ bottom: '8%', right: '20%', width: '10vw', maxWidth: '150px', minWidth: '70px', aspectRatio: '1/1', transform: 'rotate(-2.5deg)' }}>
-          <img src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=400"
-            alt="ig-6" className="w-full h-full object-cover object-center" />
+          <img src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=400" alt="ig-6" className="w-full h-full object-cover object-center" />
         </div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center z-10">
-
           <svg width="72" height="52" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="2"  y1="48" x2="16" y2="4"  stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
             <line x1="16" y1="4"  x2="30" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
@@ -402,9 +367,7 @@ function New() {
 
           <div className="flex items-center gap-3 mt-1">
             <div className="w-10 h-px bg-gray-300" />
-            <p className="font-montserrat text-[10px] tracking-[0.32em] uppercase font-bold text-gray-900">
-              Follow Our Instagram
-            </p>
+            <p className="font-montserrat text-[10px] tracking-[0.32em] uppercase font-bold text-gray-900">Follow Our Instagram</p>
             <div className="w-10 h-px bg-gray-300" />
           </div>
 
@@ -421,9 +384,7 @@ function New() {
       </div>
 
     </div>
-
   )
-
 }
 
-export default New;
+export default New

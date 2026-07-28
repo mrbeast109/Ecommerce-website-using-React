@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react'
-import {NavLink, useNavigate} from 'react-router-dom'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useCart } from '../crartDrawer/CartContext'
 import { AuthContext } from '../context/AuthContext'
+import gsap from 'gsap'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -22,16 +23,37 @@ function Navbar() {
     navigate('/')
   }
 
+  const navRef = useRef(null)
+  const logoRef = useRef(null)
+  const leftLinksRef = useRef(null)
+  const rightLinksRef = useRef(null)
+  const mobileMenuBtnRef = useRef(null)
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+    .fromTo(logoRef.current, { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.9 }, '-=0.2')
+    .fromTo(
+      leftLinksRef.current?.querySelectorAll('li') ?? [],
+      { autoAlpha: 0, y: -10 },
+      { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.15 },
+      '-=0.3'
+    )
+    .fromTo(
+      rightLinksRef.current?.querySelectorAll('li') ?? [],
+      { autoAlpha: 0, y: -10 },
+      { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.15 },
+      '<'
+    )
+    .fromTo(mobileMenuBtnRef.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.7 }, '<')
+  }, [])
+
   return (
-    <nav className='w-full bg-white shadow-sm font-montserrat text-sm font-semibold relative z-50'>
+    <nav ref={navRef} className='w-full bg-white shadow-sm font-montserrat text-sm font-semibold relative z-50'>
       <style>{`
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-10px); }
           to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideUp {
-          from { opacity: 1; transform: translateY(0); }
-          to   { opacity: 0; transform: translateY(-10px); }
         }
         .menu-open  { animation: slideDown 0.25s ease forwards; }
         .icon-open  { transition: transform 0.3s ease; transform: rotate(90deg); }
@@ -41,19 +63,19 @@ function Navbar() {
       <div className='flex justify-between items-center h-[7vh] px-6 md:px-0 md:justify-around'>
 
         <div className='hidden md:flex w-1/3 py-4 px-4 lg:px-8'>
-          <ul className='flex justify-start items-center gap-3 lg:gap-4 whitespace-nowrap'>
+          <ul ref={leftLinksRef} className='flex justify-start items-center gap-3 lg:gap-4 whitespace-nowrap'>
             <li><NavLink to="/newarrivals" className={linkClass}>NEW ARRIVALS</NavLink></li>
             <li><NavLink to="/collections" className={linkClass}>COLLECTION</NavLink></li>
             <li><NavLink to="/about" className={linkClass}>ABOUT</NavLink></li>
           </ul>
         </div>
 
-        <div className='w-full md:w-1/3 text-center py-4 px-4 font-cinzel text-2xl md:text-3xl'>
+        <div ref={logoRef} className='w-full md:w-1/3 text-center py-4 px-4 font-cinzel text-2xl md:text-3xl'>
           <h2 className='font-medium'><NavLink to="/">AZURE</NavLink></h2>
         </div>
 
         <div className='hidden md:flex w-1/3 py-4 px-4 lg:px-8'>
-          <ul className='flex gap-3 lg:gap-4 justify-end w-full whitespace-nowrap items-center'>
+          <ul ref={rightLinksRef} className='flex gap-3 lg:gap-4 justify-end w-full whitespace-nowrap items-center'>
             {user ? (
               <li>
                 <button
@@ -87,6 +109,7 @@ function Navbar() {
         </div>
 
         <button
+          ref={mobileMenuBtnRef}
           className='md:hidden text-black text-xl px-2 cursor-pointer w-8 h-8 flex items-center justify-center'
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label='Toggle menu'

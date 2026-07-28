@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import {Home, New, Collection, About, Login, Signup, Checkout, Navbar, Footer} from './components/index'
+import {Home, New, Collection, About, Login, Signup, Checkout, Navbar, Footer, ProductDetail} from './components/index'
 import AuthProvider from './context/AuthContext';
 import { CartProvider } from './crartDrawer/CartContext';
 import CartDrawer from './crartDrawer/CartDrawer';
@@ -20,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
           </Routes>
           <Footer />
         </div>
