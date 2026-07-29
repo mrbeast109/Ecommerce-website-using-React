@@ -12,7 +12,7 @@
   --font-redrose: "Red Rose", serif;
 }
 
-html {
+html, body {
   overflow-x: hidden;
 }
 

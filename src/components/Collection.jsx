@@ -58,7 +58,7 @@ function ProductCard({ product }) {
 
         <button
           onClick={() => addToCart(product)}
-          className="absolute bottom-0 left-0 right-0 py-3 text-center text-white transition-all duration-300 cursor-pointer"
+          className="absolute bottom-0 left-0 right-0 py-3 text-center text-white transition-all duration-300 cursor-pointer md:opacity-0 md:translate-y-1.5 md:group-hover:opacity-100 md:group-hover:translate-y-0"
           style={{
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '10px',
@@ -66,8 +66,6 @@ function ProductCard({ product }) {
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
             backgroundColor: 'rgba(20,20,20,0.85)',
-            opacity: hovered ? 1 : 0,
-            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
           }}
         >
           + ADD TO BAG
@@ -228,7 +226,7 @@ function Collection() {
   )
 
   return (
-    <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#fff', minHeight: '100vh', overflowX: 'hidden' }}>
 
       {sidebarOpen && (
         <div
@@ -237,7 +235,7 @@ function Collection() {
         />
       )}
 
-      <div className="flex" style={{ alignItems: 'flex-start' }}>
+      <div className="flex" style={{ alignItems: 'flex-start', overflowX: 'hidden' }}>
 
         <aside
           className="hidden lg:block"
@@ -265,7 +263,7 @@ function Collection() {
 
         <main style={{ flex: 1, minWidth: 0 }} className="px-4 py-6 lg:px-7 lg:py-8">
 
-          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 6, gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px 6px', marginBottom: 6 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <button
                 className="lg:hidden"
@@ -308,21 +306,22 @@ function Collection() {
               <button
                 onClick={() => setSortOpen(!sortOpen)}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 8,
+                  display: 'flex', alignItems: 'center', gap: 6,
                   border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer',
-                  padding: '8px 14px', fontFamily: 'Montserrat, sans-serif',
-                  fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em',
+                  padding: '8px 12px', fontFamily: 'Montserrat, sans-serif',
+                  fontSize: '11px', fontWeight: 500, letterSpacing: '0.06em',
                   textTransform: 'uppercase', color: '#1a1a1a', whiteSpace: 'nowrap',
                 }}
               >
-                SORT BY: {sortBy.toUpperCase()}
+                <span className="hidden sm:inline">SORT BY: {sortBy.toUpperCase()}</span>
+                <span className="sm:hidden">SORT</span>
                 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#1a1a1a" strokeWidth="1.5"
                   style={{ transform: sortOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                   <path d="M2 4l4 4 4-4" />
                 </svg>
               </button>
               {sortOpen && (
-                <div style={{ position: 'absolute', top: '100%', right: 0, background: '#fff', border: '1px solid #e5e5e5', zIndex: 50, minWidth: 180, boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}>
+                <div style={{ position: 'absolute', top: '100%', right: 0, background: '#fff', border: '1px solid #e5e5e5', zIndex: 50, minWidth: 160, maxWidth: '90vw', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}>
                   {SORT_OPTIONS.map(opt => (
                     <button
                       key={opt}
@@ -379,23 +378,23 @@ function Collection() {
             </div>
           )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, marginTop: 64, borderTop: '1px solid #e5e5e5' }}>
-            <div style={{ position: 'relative', overflow: 'hidden', height: 320 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: 0, marginTop: 64, borderTop: '1px solid #e5e5e5' }}>
+            <div style={{ position: 'relative', overflow: 'hidden', height: 280 }}>
               <img
                 src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop"
                 alt="The Winter Edit"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.1) 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 32, left: 32, right: 32 }}>
-                <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '28px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '0.04em', lineHeight: 1.15, margin: 0, marginBottom: 8 }}>
+              <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24 }}>
+                <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '20px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '0.04em', lineHeight: 1.15, margin: 0, marginBottom: 6 }}>
                   The Winter Edit
                 </h2>
-                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, marginBottom: 18 }}>
-                  Explore our curated selection of architectural outerwear<br />and timeless knits.
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, marginBottom: 14 }}>
+                  Explore our curated selection of architectural outerwear and timeless knits.
                 </p>
                 <button
-                  style={{ background: 'none', border: '1px solid rgba(255,255,255,0.85)', color: '#fff', padding: '9px 22px', fontFamily: 'Montserrat, sans-serif', fontSize: '10px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', transition: 'background 0.25s, color 0.25s' }}
+                  style={{ background: 'none', border: '1px solid rgba(255,255,255,0.85)', color: '#fff', padding: '8px 18px', fontFamily: 'Montserrat, sans-serif', fontSize: '10px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', transition: 'background 0.25s, color 0.25s' }}
                   onMouseEnter={e => { e.target.style.background = '#fff'; e.target.style.color = '#1a1a1a' }}
                   onMouseLeave={e => { e.target.style.background = 'none'; e.target.style.color = '#fff' }}
                 >
@@ -404,12 +403,12 @@ function Collection() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 40px', backgroundColor: '#f9f8f6', textAlign: 'center', gap: 16 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '36px 24px', backgroundColor: '#f9f8f6', textAlign: 'center', gap: 14 }}>
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="1.2">
                 <path d="M12 22c0 0-8-4-8-12A8 8 0 0 1 12 2a8 8 0 0 1 8 8c0 8-8 12-8 12z" />
                 <line x1="12" y1="22" x2="12" y2="11" />
               </svg>
-              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#1a1a1a', margin: 0 }}>
+              <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#1a1a1a', margin: 0 }}>
                 CONSCIOUS LUXURY
               </h3>
               <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '12px', color: '#666', lineHeight: 1.75, maxWidth: 260, margin: 0 }}>
