@@ -4,18 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useCart } from '../crartDrawer/CartContext'
 import { AuthContext } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 import gsap from 'gsap'
+import { Sun, Moon } from 'lucide-react'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { openCart, cartItems } = useCart()
   const { user, logout } = useContext(AuthContext)
+  const { isDark, toggleTheme } = useTheme()
   const navigate = useNavigate()
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   const linkClass = ({ isActive }) =>
-    `transition-colors duration-300 hover:text-[#D15A5C] ${isActive ? 'text-[#D15A5C]' : 'text-black'}`
+    `transition-colors duration-300 hover:text-[#D15A5C] ${isActive ? 'text-[#D15A5C]' : 'text-black dark:text-white'}`
 
   function handleLogout() {
     logout()
@@ -49,7 +52,7 @@ function Navbar() {
   }, [])
 
   return (
-    <nav ref={navRef} className='w-full bg-white shadow-sm font-montserrat text-sm font-semibold relative z-50'>
+    <nav ref={navRef} className='w-full bg-white dark:bg-[#111111] shadow-sm dark:shadow-gray-900 font-montserrat text-sm font-semibold relative z-50 transition-colors duration-300'>
       <style>{`
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-10px); }
@@ -70,7 +73,7 @@ function Navbar() {
           </ul>
         </div>
 
-        <div ref={logoRef} className='w-full md:w-1/3 text-center py-4 px-4 font-cinzel text-2xl md:text-3xl'>
+        <div ref={logoRef} className='w-full md:w-1/3 text-center py-4 px-4 font-cinzel text-2xl md:text-3xl dark:text-white transition-colors duration-300'>
           <h2 className='font-medium'><NavLink to="/">AZURE</NavLink></h2>
         </div>
 
@@ -80,7 +83,7 @@ function Navbar() {
               <li>
                 <button
                   onClick={handleLogout}
-                  className='tracking-widest text-xs border border-black px-3 py-1.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 cursor-pointer'
+                  className='tracking-widest text-xs border border-black dark:border-white dark:text-white px-3 py-1.5 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 cursor-pointer'
                 >
                   LOG OUT
                 </button>
@@ -94,42 +97,62 @@ function Navbar() {
             <li>
               <button
                 onClick={openCart}
-                className="relative text-black hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer"
+                className="relative text-black dark:text-white hover:text-[#D15A5C] dark:hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer"
                 aria-label="Open cart"
               >
                 <FontAwesomeIcon icon={faCartShopping} />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                  <span className="absolute -top-2 -right-2 bg-black dark:bg-white dark:text-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
                     {totalItems}
                   </span>
                 )}
               </button>
             </li>
+            {/* Dark mode toggle */}
+            <li>
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle dark mode"
+                className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 cursor-pointer text-base"
+              >
+                {isDark ? <Sun size={16} /> : <Moon size={16} />}
+              </button>
+            </li>
           </ul>
         </div>
 
-        <button
-          ref={mobileMenuBtnRef}
-          className='md:hidden text-black text-xl px-2 cursor-pointer w-8 h-8 flex items-center justify-center'
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label='Toggle menu'
-        >
-          <span className={menuOpen ? 'icon-open' : 'icon-close'}>
-            <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
-          </span>
-        </button>
+        <div className='md:hidden flex items-center gap-3'>
+          {/* Dark mode toggle — mobile */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 cursor-pointer text-sm"
+          >
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button
+            ref={mobileMenuBtnRef}
+            className='text-black dark:text-white text-xl px-2 cursor-pointer w-8 h-8 flex items-center justify-center'
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label='Toggle menu'
+          >
+            <span className={menuOpen ? 'icon-open' : 'icon-close'}>
+              <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
+            </span>
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
-        <div className='menu-open md:hidden bg-white border-t border-gray-100 shadow-lg px-6 py-4 flex flex-col gap-4 text-sm font-semibold'>
+        <div className='menu-open md:hidden bg-white dark:bg-[#111111] border-t border-gray-100 dark:border-gray-800 shadow-lg px-6 py-4 flex flex-col gap-4 text-sm font-semibold transition-colors duration-300'>
           <NavLink to="/newarrivals" className={linkClass} onClick={() => setMenuOpen(false)}>NEW ARRIVALS</NavLink>
           <NavLink to="/collections" className={linkClass} onClick={() => setMenuOpen(false)}>COLLECTION</NavLink>
           <NavLink to="/about" className={linkClass} onClick={() => setMenuOpen(false)}>ABOUT</NavLink>
-          <hr className='border-gray-100' />
+          <hr className='border-gray-100 dark:border-gray-700' />
           {user ? (
             <button
               onClick={handleLogout}
-              className='text-left tracking-widest text-xs border border-black px-3 py-1.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 cursor-pointer w-fit'
+              className='text-left tracking-widest text-xs border border-black dark:border-white dark:text-white px-3 py-1.5 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 cursor-pointer w-fit'
             >
               LOG OUT
             </button>
@@ -141,11 +164,11 @@ function Navbar() {
           )}
           <button
             onClick={() => { openCart(); setMenuOpen(false); }}
-            className="flex items-center gap-2 text-black hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer relative w-fit"
+            className="flex items-center gap-2 text-black dark:text-white hover:text-[#D15A5C] transition-colors duration-300 cursor-pointer relative w-fit"
           >
             <FontAwesomeIcon icon={faCartShopping} /> CART
             {totalItems > 0 && (
-              <span className="bg-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="bg-black dark:bg-white dark:text-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {totalItems}
               </span>
             )}

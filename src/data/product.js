@@ -1,5 +1,26 @@
 const products = [
-  /* ── HOME / SLIDER (IDs 1–7) ─────────────────────────────── */
+
+  {
+    id: 217,
+    name: 'Pia Leather Bomber',
+    price: 18999,
+    category: 'Exclusives',
+    collection: 'Exclusives',
+    badge: 'Exclusive',
+    colors: ['#EADDD0'],
+    description:
+      'Supple, lightly textured leather brings softness and ease to this slouchy bomber silhouette. Designed with a high funnel neck, dropped shoulders, and gently gathered sleeves. Secured by a concealed zip and finished with a low elasticated hem.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    image:
+      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Pia_Ivory_Packshot.jpg?v=1771002858&width=1920&crop=center',
+    images: [
+      'https://secure.nour-hammour.com/cdn/shop/videos/c/vp/62011c4769f1438d823e46899e2e67fd/62011c4769f1438d823e46899e2e67fd.HD-1080p-7.2Mbps-77232577.mp4',
+      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/pia_ivory_7_Cropped.jpg?v=1771270872&width=1024&crop=center',
+      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/pia_ivory_6_Cropped.jpg?v=1772733744&width=1024&crop=center',
+      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/pia_ivory_2_Cropped.jpg?v=1772733744&width=1024&crop=center',
+      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/pia_ivory_3_Cropped.jpg?v=1772733744&width=1024&crop=center',
+    ],
+  },
   {
     id: 1,
     name: 'Relaxed Fit Short-sleeved linen-blend shirt',
@@ -217,6 +238,7 @@ const products = [
     image:
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/AristeTerracottaPackshotShopify.jpg?v=1778081137&width=1920&crop=center',
     images: [
+      'https://secure.nour-hammour.com/cdn/shop/videos/c/vp/3405f02bfb164a85b3d4e3a42aa68c49/3405f02bfb164a85b3d4e3a42aa68c49.HD-1080p-7.2Mbps-83533662.mp4',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Terracotta_4_Cropped.jpg?v=1778081054&width=1920&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Terracotta_2_Cropped.jpg?v=1778081053&width=1920&crop=center',
       'https://cdn.sanity.io/images/h9gyalsq/production/da9debc8b8dc7b85cf3c2025577e48498bdd8b2d-3000x4050.jpg?w=2560&q=100&auto=format',
@@ -237,14 +259,49 @@ const products = [
     image:
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Black_Packshot_Shopify_55e6c0cd-64d4-42cb-9c9e-ebcc67542a84.jpg?v=1756717623&width=1920&crop=center',
     images: [
+      'https://secure.nour-hammour.com/cdn/shop/videos/c/vp/1da0357fc3f440179ae449df9bea2e4d/1da0357fc3f440179ae449df9bea2e4d.HD-1080p-7.2Mbps-84032561.mp4',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Black_1_Cropped.jpg?v=1778683161&width=1920&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Black_5_Cropped.jpg?v=1778683161&width=1920&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Black_2_Cropped.jpg?v=1778683161&width=1024&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Ariste_Black_3_Cropped.jpg?v=1778683161&width=1024&crop=center',
     ],
   },
-
-  /* ── NEW ARRIVALS (IDs 101–104) ──────────────────────────── */
+  {
+    id: 106,
+    name: 'Elasticated fabric belt',
+    price: 1599,
+    category: 'Accessories',
+    badge: null,
+    description:
+      'Braided elasticated fabric belt with coated details and a metal buckle.',
+    sizes: ['One Size'],
+    colors: ['#E3D8CB','#000'],
+    variants: {'#E3D8CB': 106, '#000': 107},
+    image:
+      'https://image.hm.com/assets/hm/35/ba/35ba8148ba70ce895ece9f67c87d169a067841f4.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/35/ba/35ba8148ba70ce895ece9f67c87d169a067841f4.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/f1/ac/f1ac976b7e1aca9b287ee7d9f1d2029f980f6ba3.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 107,
+    name: 'Elasticated fabric belt',
+    price: 1599,
+    category: 'Accessories',
+    badge: null,
+    description:
+      'Braided elasticated fabric belt with coated details and a metal buckle.',
+    sizes: ['One Size'],
+    colors: ['#000','#E3D8CB'],
+    variants: {'#000': 107, '#E3D8CB': 106},
+    image:
+      'https://image.hm.com/assets/hm/98/9c/989cfe8897c1361e9286a59ee6deaf9f8606a5b3.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/98/9c/989cfe8897c1361e9286a59ee6deaf9f8606a5b3.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/31/32/313239ee88aa8ae1865adfbdc6b27b29c26eb95a.jpg?imwidth=2160',
+    ],
+  },
   {
     id: 101,
     name: 'Selly Leather Skirt',
@@ -259,6 +316,7 @@ const products = [
     image:
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SellySkirtNoirClassiquePackshotShopify.jpg?v=1778677482&width=1920&crop=center',
     images: [
+      'https://secure.nour-hammour.com/cdn/shop/videos/c/vp/61cbe19b1fed48ee847b322c231d01b8/61cbe19b1fed48ee847b322c231d01b8.HD-1080p-7.2Mbps-84039058.mp4',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Selly_Skirt_Black_2_Cropped.jpg?v=1778688238&width=1920&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SellySkirtNoirClassiquePackshotShopify.jpg?v=1778677482&width=1920&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Selly_Skirt_Black_3_Cropped.jpg?v=1778688238&width=1920&crop=center',
@@ -279,6 +337,7 @@ const products = [
     image:
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SellySkirtCremeSuedePackshotShopify.jpg?v=1778677608&width=1024&crop=center',
     images: [
+      'https://secure.nour-hammour.com/cdn/shop/videos/c/vp/a43df11bc1cc4df28db4878bead592e5/a43df11bc1cc4df28db4878bead592e5.HD-1080p-7.2Mbps-84038836.mp4',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SellySkirtCremeSuedePackshotShopify.jpg?v=1778677608&width=1024&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Selly_Skirt_Creme_Suede_1_Cropped.jpg?v=1778688012&width=1920&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Selly_Skirt_Creme_Suede_2_Cropped.jpg?v=1778688012&width=1024&crop=center',
@@ -302,6 +361,7 @@ const products = [
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Kerri_Black_Packshot_Shopify_6ae4bdcb-9674-4682-859e-9a3f3bcf9c27.jpg?v=1756900893&width=1024&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/KERRI_BLACK_1402CROPPED.jpg?v=1756900893&width=1024&crop=center',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/KERRI_BLACK_1347CROPPED.jpg?v=1756900893&width=1400&crop=center',
+      'https://secure.nour-hammour.com/cdn/shop/videos/c/vp/d80124af85dd4511938a384b59fa8dd1/d80124af85dd4511938a384b59fa8dd1.HD-1080p-7.2Mbps-51983087.mp4',
       'https://cdn.sanity.io/images/h9gyalsq/production/6c7c64148f64a2bf9ee6b8b1db0877a9be5393a8-2000x2700.jpg?w=2560&q=100&auto=format',
       'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/KERRI_BLACK_1377CROPPED.jpg?v=1756900893&width=768&crop=center',
     ],
@@ -325,158 +385,381 @@ const products = [
   },
   {
     id: 104,
-    name: 'Sash Belt Shearling',
+    name: 'Webbing belt',
     price: 999,
     category: 'Accessories',
     badge: null,
     description:
-      'Cosy shearling texture meets elegant sash styling. Layer over coats or wear as a standalone belt statement.',
+      'Belt in webbing with a metal buckle. Width 4 cm.',
     sizes: ['One Size'],
-    colors: ['#d4c5a9', '#c8b89a'],
+    colors: ['#000'],
     image:
-      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SashBelt_Leopard_fb7cb914-aba6-4470-ae5f-f14b3ad4d223.jpg?v=1764947543&width=1024&crop=center',
+      'https://image.hm.com/assets/hm/16/a3/16a39691c46b5a740a2a272ec53c5ef3887b552e.jpg?imwidth=2160',
     images: [
-      'https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SashBelt_Leopard_fb7cb914-aba6-4470-ae5f-f14b3ad4d223.jpg?v=1764947543&width=1024&crop=center',
+      'https://image.hm.com/assets/hm/16/a3/16a39691c46b5a740a2a272ec53c5ef3887b552e.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/86/b0/86b0b6f1f2bbdd221b35f82fcbe72f63a05014db.jpg?imwidth=2160',
     ],
   },
-
-  /* ── COLLECTION (IDs 201–208) ────────────────────────────── */
   {
     id: 201,
-    name: 'Oversized Wool Blend Coat',
-    price: 249,
-    category: 'Outerwear',
+    name: 'Asymmetric tie-detail dress',
+    price: 2499,
+    category: 'Dresses',
     collection: 'New Arrivals',
     badge: null,
-    colors: ['#c8b89a', '#2a2a2a', '#e8e0d6'],
+    colors: ['#977D5C', '#140B0E'],
+    variants: {'#977D5C': 201, '#140B0E': 209},
     description:
-      'A generous oversized silhouette in a premium wool blend. The kind of coat that makes every entrance count.',
+      'Calf-length dress in viscose jersey with a round neckline, cap sleeves and wide ties at one side of the waist to create a gently draped effect. Asymmetric hem.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     image:
-      'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/ff/98/ff988e18a7eb67be772a455928274a751c79c167.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/99/45/9945994fd8b5fcf04394fd162d8854103327dec0.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/29/9d/299dea2fa1697f96c253dddb415a4507e49dfd43.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/12/e0/12e0d965e3bc5414385a028f77c1748be773b381.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/11/0b/110b7e2604b8d7a3108eb1c0bbdf62f166335b25.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/ff/98/ff988e18a7eb67be772a455928274a751c79c167.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/39/4f/394f6b292e877f2898dfbd24805c45e9a3181300.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 209,
+    name: 'Asymmetric tie-detail dress',
+    price: 2499,
+    category: 'Dresses',
+    collection: 'New Arrivals',
+    badge: null,
+    colors: ['#140B0E','#977D5C' ],
+    variants: {'#140B0E': 209, '#977D5C': 201},
+    description:
+      'Calf-length dress in viscose jersey with a round neckline, cap sleeves and wide ties at one side of the waist to create a gently draped effect. Asymmetric hem.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    image:
+      'https://image.hm.com/assets/hm/3c/ab/3cab3d832f53620c502750083229dfbc06bdb9a6.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/a9/5a/a95a071671a681b32b9283c49e57d347c38119a7.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/29/6d/296db43dbf31e1a26218a2646fe0792ba44a614a.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/d5/d5/d5d50c953f9e3b2302e0b215f50cccd7a579b1be.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/79/02/79021ebf26be930125b427d0192301d22d66654f.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/3c/ab/3cab3d832f53620c502750083229dfbc06bdb9a6.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/8f/4d/8f4d640f82a4ffeb300d78cc948117e1073e150c.jpg?imwidth=2160',
     ],
   },
   {
     id: 202,
-    name: 'Relaxed Fit Jeans',
+    name: 'Oversized Fit Printed raw-edge cotton T-shirt',
     price: 89,
-    category: 'Trousers',
+    category: 'T-shirts',
     collection: 'Best Sellers',
     badge: null,
-    colors: ['#4a5568', '#2d3748'],
+    colors: ['#BBCDE1', '#000'],
+    variants: {'#BBCDE1': 202, '#000': 210},
     description:
-      'Our bestselling jeans in a relaxed fit that sits just right. Sustainably dyed denim with just the right amount of stretch.',
+      'Boxy-style T-shirt in printed, heavyweight cotton jersey with a washed look. Features a round, rib-trimmed neckline, dropped shoulders and raw roll edges at the cuffs and hem. Oversized fit for a baggy, extra-loose silhouette.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     image:
-      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/cd/3b/cd3b7c0ba82fdb7e4ff32a684f5510a7b9aa76e6.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/67/ab/67abb94527fc95b41febea8c43e72a3221072a51.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/f0/25/f025cf3e5a83259dc56e79e8bc707ef3b14c8bef.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/06/d3/06d334eb13e1f27140627a6ac4dd2cfb7c87c8e9.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/8d/ca/8dcaa221361ffdb04a524978e4958ebb7c56decf.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/cd/3b/cd3b7c0ba82fdb7e4ff32a684f5510a7b9aa76e6.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/91/7c/917c86131fc649d34b66838ad6215a4ae6ed02fe.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/f7/e2/f7e22aff477951526d0dd1dd7a402e2eedeaad7c.jpg?imwidth=2160',
+
+    ],
+  },
+  {
+    id: 210,
+    name: 'Oversized Fit Printed raw-edge cotton T-shirt',
+    price: 89,
+    category: 'T-shirts',
+    collection: 'Best Sellers',
+    badge: null,
+    colors: ['#000', '#BBCDE1'],
+    variants: {'#000': 210, '#BBCDE1': 202},
+    description:
+      'Boxy-style T-shirt in printed, heavyweight cotton jersey with a washed look. Features a round, rib-trimmed neckline, dropped shoulders and raw roll edges at the cuffs and hem. Oversized fit for a baggy, extra-loose silhouette.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    image:
+      'https://image.hm.com/assets/hm/b4/09/b4090ec06b6cbba9443ff63702f010d851d99511.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/5d/6a/5d6a34ce2af0037ed4d5e55493747163173d3361.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/d2/19/d2196bf9e73f91134147be23ac46e45a9fb1ef5a.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/1b/4f/1b4fee476f2f1e2d54b132415f0041c07b36c312.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/34/c5/34c51879f8b49c227c6f56fa80960bc83d7e2495.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/b4/09/b4090ec06b6cbba9443ff63702f010d851d99511.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/e6/9b/e69b7b7628f21db79410607b535eb10875fd329d.jpg?imwidth=2160',
+
     ],
   },
   {
     id: 203,
-    name: 'Ribbed Mock-Neck Sweater',
+    name: 'Relaxed Bootcut Jeans',
     price: 129,
-    category: 'Knitwear',
-    collection: 'Sustainability',
-    badge: 'SUSTAINABLE CHOICE',
-    colors: ['#2a2a2a', '#8B7355'],
+    category: 'Jeans',
+    collection: 'Trending',
+    badge: 'Trending',
+    colors: ['#C4DBEB', '#000'],
+    variants: {'#C4DBEB' : 203, '#000' : 211},
     description:
-      'Crafted from 95% recycled fibres, this ribbed mock-neck sweater is as responsible as it is refined.',
+      '5-pocket jeans in rigid cotton denim with a relaxed fit from the seat to the hem and a gently flared leg. Regular waist with a zip fly and button.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     image:
-      'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/80/04/80047cb69d6ac2c2a0af968555fd610215111d3b.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/ed/13/ed13d2b748c38f935b3d736d3353d98312f344bd.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/25/a8/25a8c45bba54c7bbf79ef0c2780af12c55b48469.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/32/bb/32bb049110998b2caa50a3868ffe18b235c56fed.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/80/04/80047cb69d6ac2c2a0af968555fd610215111d3b.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/ac/0f/ac0fd96beb4486c86f85ca59aad7520ef55f9325.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 211,
+    name: 'Relaxed Bootcut Jeans',
+    price: 129,
+    category: 'Jeans',
+    collection: 'Trending',
+    badge: 'Trending',
+    colors: ['#000', '#C4DBEB'],
+    variants: {'#000' : 211, '#C4DBEB' : 203},
+    description:
+      '5-pocket jeans in rigid cotton denim with a relaxed fit from the seat to the hem and a gently flared leg. Regular waist with a zip fly and button.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    image:
+      'https://image.hm.com/assets/hm/00/b2/00b24e2e593a5333e9721aefc0d284f0b9a80061.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/dc/e5/dce57c9010df60fcf467a3379fe66424c0913c9f.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/d1/8e/d18edf57bf918abccd549329825fac63bd921d60.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/55/78/5578eb86aeedd5431864e3c3f9597199175bad4c.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/00/b2/00b24e2e593a5333e9721aefc0d284f0b9a80061.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/4d/2a/4d2a907554893090d79ea2ffe438d59a5d6bdc21.jpg?imwidth=2160',
     ],
   },
   {
     id: 204,
-    name: 'Leather Chelsea Boots',
+    name: 'Trainers',
     price: 189,
     category: 'Shoes',
     collection: 'Best Sellers',
     badge: null,
-    colors: ['#1a1a1a'],
+    colors: ['#BEA692','#089BEB','#000','#8B1426'],
+    variants: {'#BEA692' : 204, '#089BEB' : 212, '#000' : 213, '#8B1426' : 214},
     description:
-      'Full-grain leather uppers and a cushioned insole make these Chelseas as comfortable as they are timeless.',
+      'Trainers with a padded top edge, a tongue and lacing at the front and soles that are patterned underneath.',
     sizes: ['38', '39', '40', '41', '42', '43'],
     image:
-      'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/98/94/989440749a040aa0c3f29f5948115baf395f40a4.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/98/94/989440749a040aa0c3f29f5948115baf395f40a4.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/b4/39/b439e15efb4d65ef2fab3b1d1c80d1c945f9ce70.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/57/54/5754477e12609945bddc043a189a291b792b0233.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 212,
+    name: 'Trainers',
+    price: 189,
+    category: 'Shoes',
+    collection: 'Best Sellers',
+    badge: null,
+    colors: ['#089BEB','#BEA692','#000','#8B1426'],
+    variants: {'#089BEB' : 212, '#BEA692' : 204, '#000' : 213, '#8B1426' : 214},
+    description:
+      'Trainers with a padded top edge, a tongue and lacing at the front and soles that are patterned underneath.',
+    sizes: ['38', '39', '40', '41', '42', '43'],
+    image:
+      'https://image.hm.com/assets/hm/fc/f7/fcf716b8c876eda6855304c7a28262f0946f43c0.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/fc/f7/fcf716b8c876eda6855304c7a28262f0946f43c0.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/30/8d/308d5aee0211fe297469c14fb3827fef4292f592.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/b8/3b/b83bbbc26fc121bb2d3e338f1e0de2e9c1be2934.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 213,
+    name: 'Trainers',
+    price: 189,
+    category: 'Shoes',
+    collection: 'Best Sellers',
+    badge: null,
+    colors: ['#000','#BEA692','#089BEB','#8B1426'],
+    variants: {'#000' : 213, '#BEA692' : 204, '#089BEB' : 212, '#8B1426' : 214},
+    description:
+      'Trainers with a padded top edge, a tongue and lacing at the front and soles that are patterned underneath.',
+    sizes: ['38', '39', '40', '41', '42', '43'],
+    image:
+      'https://image.hm.com/assets/hm/ad/8f/ad8f4d082b596fa866f7578000bac3f4ca64f7e4.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/ad/8f/ad8f4d082b596fa866f7578000bac3f4ca64f7e4.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/6e/7f/6e7f9879e6bf1c0b7bcd5343fbc8eeb251b2c7fa.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/3f/1c/3f1cb2f91f769b7888efba42a6de5069ba9ab0c3.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 214,
+    name: 'Trainers',
+    price: 189,
+    category: 'Shoes',
+    collection: 'Best Sellers',
+    badge: null,
+    colors: ['#8B1426','#BEA692','#089BEB','#000'],
+    variants: {'#8B1426' : 214, '#BEA692' : 204, '#089BEB' : 212, '#000' : 213},
+    description:
+      'Trainers with a padded top edge, a tongue and lacing at the front and soles that are patterned underneath.',
+    sizes: ['38', '39', '40', '41', '42', '43'],
+    image:
+      'https://image.hm.com/assets/hm/71/13/7113613ebbba7555bd7cea89182e51bdaa61b674.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/71/13/7113613ebbba7555bd7cea89182e51bdaa61b674.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/80/20/802021aac07fa1e2bf02bb593097a2ba1061ecd4.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/fe/97/fe97d5a9ee366df889ea6df2c6bf537851639010.jpg?imwidth=2160',
     ],
   },
   {
     id: 205,
-    name: 'Structured Wool Blazer',
+    name: 'Textured one-shoulder top',
     price: 315,
     category: 'Outerwear',
     collection: 'New Arrivals',
-    badge: null,
-    colors: ['#6b7280', '#2a2a2a'],
+    badge: 'New Arrivals',
+    colors: ['#E6E5E0', '#7F4967'],
+    variants: {'#E6E5E0' : 205, '#7F4967' : 215},
     description:
-      'Sharp-shouldered and precisely tailored. This wool blazer is the cornerstone of a considered wardrobe.',
+      'Fitted one-shoulder top in textured jersey featuring an asymmetric neckline, one wide shoulder strap and a narrow sleeve panel around one arm. Designed with pleats on the shoulder and a gathered seam at the opposite side of the waist to create a gently draped effect.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     image:
-      'https://images.unsplash.com/photo-1594938298603-c8148c4b4f8a?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/7c/69/7c690ea2f2d15b143c8a8741a9e4d4ac72dad75d.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1594938298603-c8148c4b4f8a?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/e7/d4/e7d4d8157ead0d99f8fe5d60773fffe7527c6e52.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/52/4c/524c522a32c07750f741f7b610a9715d39c5fcba.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/7b/92/7b928bcb5fdd100596b725c6731d59f08832127c.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/6c/96/6c96b0ba574c8b64f862484773668eef365324d9.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/7c/69/7c690ea2f2d15b143c8a8741a9e4d4ac72dad75d.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/93/3e/933e08104566d1dd5563fcc6514fe3ce4b93c358.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 215,
+    name: 'Textured one-shoulder top',
+    price: 315,
+    category: 'Outerwear',
+    collection: 'New Arrivals',
+    badge: 'New Arrivals',
+    colors: ['#7F4967', '#E6E5E0'],
+    variants: {'#7F4967' : 215, '#E6E5E0' : 205},
+    description:
+      'Fitted one-shoulder top in textured jersey featuring an asymmetric neckline, one wide shoulder strap and a narrow sleeve panel around one arm. Designed with pleats on the shoulder and a gathered seam at the opposite side of the waist to create a gently draped effect.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    image:
+      'https://image.hm.com/assets/hm/6b/b0/6bb08102ec744561eed6c9563aa41a002bf0e2de.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/56/f4/56f4c09f3267dcfb4964e00efaceb52577af99fd.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/45/d0/45d0f4b7068eccba80d0519a608d9e5797ebf9ce.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/c0/85/c085c318652438c4c56eaa3d700d3e4d543a3789.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/6e/d8/6ed820841781940e2094d4b44f7227fc9238620d.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/e5/08/e508c9d6b8710f6329b29646e28748d69c795b7f.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/4c/ab/4cabba1d0670fc5b303d6ae56063d43550afd0c1.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/6b/b0/6bb08102ec744561eed6c9563aa41a002bf0e2de.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/c6/6f/c66fe6c690e73f9378976ff6c59bfd29580edfca.jpg?imwidth=2160',
     ],
   },
   {
     id: 206,
-    name: 'Silk Bias-Cut Dress',
-    price: 175,
+    name: 'Fringed bouclé-knit dress',
+    price: 299,
     category: 'Dresses',
     collection: 'Campaigns',
     badge: null,
-    colors: ['#d4af7a', '#c8b89a'],
+    colors: ['#DAD8D7', '#DFD9D1'],
+    variants: {'#DAD8D7' : 206, '#DFD9D1' : 216},
     description:
-      'Cut on the bias from pure silk, this dress skims the body with liquid grace. A forever piece.',
+      'Sleeveless mini dress in a soft bouclé knit containing shimmering threads. Features a round neckline, decorative welt front pockets finished with a textured button, and fringe trims in a contrasting colour around the neckline, armholes and at the pockets. Unlined.',
     sizes: ['XS', 'S', 'M', 'L'],
     image:
-      'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/de/e5/dee572e2e5ddfb10d6f54e46c15dc43c15c7a1bd.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/fa/ea/faea54532b5220951350d876d7b03d47758301e2.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/b6/7a/b67a5fbdff9145a7fa88ef0ed471e560bf8bc929.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/53/04/530478981d05158bd0a706b11515ad1674b1356b.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/5d/d5/5dd5f02bf5b338d4c4aebd6d395475fd7bbdc86a.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/5d/d5/5dd5f02bf5b338d4c4aebd6d395475fd7bbdc86a.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/cc/d1/ccd163ee99ef2690ea91c9601f458d85fc528474.jpg?imwidth=2160',
+    ],
+  },
+  {
+    id: 216,
+    name: 'Fringed bouclé-knit dress',
+    price: 299,
+    category: 'Dresses',
+    collection: 'Campaigns',
+    badge: null,
+    colors: ['#DFD9D1', '#DAD8D7'],
+    variants: {'#DFD9D1' : 216, '#DAD8D7' : 206},
+    description:
+      'Sleeveless mini dress in a soft bouclé knit containing shimmering threads. Features a round neckline, decorative welt front pockets finished with a textured button, and fringe trims in a contrasting colour around the neckline, armholes and at the pockets. Unlined.',
+    sizes: ['XS', 'S', 'M', 'L'],
+    image:
+      'https://image.hm.com/assets/hm/f9/89/f989477d4de3eccdf5830b9e367daa73bd72f2b0.jpg?imwidth=2160',
+    images: [
+      'https://image.hm.com/assets/hm/bc/48/bc4829458f62deae7957935f4b8733388da4de91.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/58/39/5839ab24895bca6df50c6a96631065b313f4584e.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/b8/6b/b86bf60f94535990f5ad5bdaa02b1a300afd7d03.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/93/49/934962f399c3a5dbc4f7de4ac3a4dfb7b4520d79.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/f9/89/f989477d4de3eccdf5830b9e367daa73bd72f2b0.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/ba/ad/baad7b8559e91ef2c3f468b574e7e7022ad67f23.jpg?imwidth=2160',
     ],
   },
   {
     id: 207,
-    name: 'Wide-Leg Tailored Trousers',
-    price: 110,
-    category: 'Trousers',
+    name: 'Scuba baseball jacket',
+    price: 210,
+    category: 'Outerwear',
     collection: 'New Arrivals',
     badge: null,
-    colors: ['#f5f5f0', '#2a2a2a'],
+    colors: ['#494458'],
     description:
-      'A sweeping wide-leg cut in a structured fabric that holds its shape beautifully throughout the day.',
+      'Baseball jacket in scuba fabric with embroidered motifs. Features a collar, press-studs down the front, welt side pockets and a wide, ribbed trim at the cuffs and hem. Lined.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     image:
-      'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/57/73/5773647e226aa522948092b4d78a99361a01a8c3.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/11/9b/119bdb15034298f258376b975053a99cb1c1ce6f.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/11/9b/119bdb15034298f258376b975053a99cb1c1ce6f.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/b2/3c/b23ce160ba8f358b6281bc90bb91f5252456e9af.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/e9/33/e9334ad4fadbb0e9194e7a8ba129dc74270959a6.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/44/c3/44c3016da27edd00d3bfd3e631ec64048ccb15dd.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/57/73/5773647e226aa522948092b4d78a99361a01a8c3.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/2a/d6/2ad62da018f06b9fe45ffb1586807e93c3a7df83.jpg?imwidth=2160'
     ],
   },
   {
     id: 208,
-    name: 'Cashmere Accessory Set',
-    price: 145,
-    category: 'Accessories',
-    collection: 'New Arrivals',
-    badge: 'NEW ARRIVAL',
-    colors: ['#c8a96e', '#d4c5a9'],
+    name: 'Collared jacket',
+    price: 499,
+    category: 'Outerwear',
+    collection: 'Exclusives',
+    badge: 'Exclusive',
+    colors: ['#000'],
     description:
-      'A matching scarf and glove set in 100% cashmere. Warmth and elegance, paired perfectly.',
-    sizes: ['One Size'],
+      'Jacket in coated fabric with a collar, zip down the front, diagonal welt pockets, yoke at the back, an inner welt pocket and a button at the cuffs. Lined.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
     image:
-      'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/2f/6d/2f6d3ab1a39d7c1bf9eee31600e5c294ee35285d.jpg?imwidth=2160',
     images: [
-      'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600&q=80&fit=crop',
+      'https://image.hm.com/assets/hm/71/35/71353d67b028bb71ccfc0146643b6c2435525fbd.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/7f/b6/7fb6b0e3bee3ed7b9dfba8ccd3b19dadf0f0dbcc.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/3a/3a/3a3a4c93617060d2250c9bd403fe3b91436bca7c.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/23/2f/232f37190c84b01c4b21190a450d62a703fc5019.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/7a/7e/7a7e9a60c3d1a3c1daf3477132ce380cf3de4f38.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/2f/6d/2f6d3ab1a39d7c1bf9eee31600e5c294ee35285d.jpg?imwidth=2160',
+      'https://image.hm.com/assets/hm/d8/a5/d8a5d6e69317f128a9529e41678b77e03b6b1f91.jpg?imwidth=2160'
     ],
   },
+  
 ]
 
 export default products

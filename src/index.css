@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300..700&display=swap');
 @import 'tailwindcss';
 
+@variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-cinzel: "Cinzel", serif;
@@ -14,12 +15,13 @@
 
 html, body {
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hide scrollbar visually but keep scroll functional */
+
 .overflow-x-auto::-webkit-scrollbar {
   display: none;
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

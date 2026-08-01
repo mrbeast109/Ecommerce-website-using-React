@@ -55,7 +55,7 @@ export default function ProductSlider() {
       <button
         onClick={() => scrollBy(-1)}
         disabled={!canPrev}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center bg-white shadow-md border border-gray-200 rounded-full cursor-pointer text-xl transition-all duration-200 hover:bg-black hover:text-white -translate-x-1/2 ${
+        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center bg-white dark:bg-[#1a1a1a] shadow-md border border-gray-200 dark:border-gray-700 rounded-full cursor-pointer text-xl transition-all duration-200 hover:bg-black hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-black -translate-x-1/2 ${
           canPrev ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-label="Previous"
@@ -83,7 +83,7 @@ export default function ProductSlider() {
       <button
         onClick={() => scrollBy(1)}
         disabled={!canNext}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center bg-white shadow-md border border-gray-200 rounded-full cursor-pointer text-xl transition-all duration-200 hover:bg-black hover:text-white translate-x-1/2 ${
+        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center bg-white dark:bg-[#1a1a1a] shadow-md border border-gray-200 dark:border-gray-700 rounded-full cursor-pointer text-xl transition-all duration-200 hover:bg-black hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-black translate-x-1/2 ${
           canNext ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-label="Next"

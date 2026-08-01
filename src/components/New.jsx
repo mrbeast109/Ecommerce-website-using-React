@@ -1,33 +1,11 @@
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useCart } from '../crartDrawer/CartContext'
+import Reveal from '../utils/Reveal'
+import products from '../data/product'
 
-const newArrivals = [
-  {
-    id: 101,
-    name: "Passage Funnelneck Jacket",
-    price: 2499,
-    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/PassageBlackPackshotShopify.jpg?v=1778677633&width=1024&crop=center",
-  },
-  {
-    id: 102,
-    name: "DalmaSuede Bomber",
-    price: 2799,
-    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/DalmaBarkSuedePackshotShopify.jpg?v=1778677429&width=1024&crop=center",
-  },
-  {
-    id: 103,
-    name: "Coda Suede Wideleg Trouser",
-    price: 2899,
-    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/CodaPantsTobaccoSuedePackshotShopify.jpg?v=1778677493&width=1024&crop=center",
-  },
-  {
-    id: 104,
-    name: "Sash Belt Shearling",
-    price: 999,
-    image: "https://cdn.shopify.com/s/files/1/0030/2946/7203/files/SashBelt_Leopard_fb7cb914-aba6-4470-ae5f-f14b3ad4d223.jpg?v=1764947543&width=1024&crop=center",
-  },
-]
+const newArrivals = products.filter(p => p.badge && p.badge.toUpperCase().includes('NEW ARRIVAL'))
+
 
 function NewArrivalCard({ product }) {
   const { addToCart } = useCart()
@@ -35,12 +13,12 @@ function NewArrivalCard({ product }) {
 
   return (
     <div className="flex flex-col group cursor-pointer">
-      <div className="relative overflow-hidden bg-[#f5f5f3] aspect-[3/4]">
-        <Link to={`/product/${product.id}`}>
+      <div className="relative overflow-hidden bg-[#f5f5f3] dark:bg-[#1e1e1e] aspect-[3/4] flex items-center justify-center">
+        <Link to={`/product/${product.id}`} className="block w-full h-full">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-in-out p-2"
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-in-out"
           />
         </Link>
         <button
@@ -53,14 +31,14 @@ function NewArrivalCard({ product }) {
 
       <div className="flex items-start justify-between mt-1 px-0.5">
         <Link to={`/product/${product.id}`} className="flex flex-col gap-0.5 hover:underline">
-          <h3 className="font-montserrat text-xs sm:text-sm font-medium text-gray-900 leading-snug">
+          <h3 className="font-montserrat text-xs sm:text-sm font-medium text-gray-900 dark:text-gray-100 leading-snug">
             {product.name}
           </h3>
-          <p className="font-montserrat text-xs text-gray-500">₹{product.price.toLocaleString()}</p>
+          <p className="font-montserrat text-xs text-gray-500 dark:text-gray-400">${product.price.toLocaleString()}</p>
         </Link>
         <button
           onClick={() => setWished(!wished)}
-          className={`text-lg mt-0.5 flex-shrink-0 transition-colors duration-200 cursor-pointer ${wished ? 'text-red-500' : 'text-gray-300 hover:text-gray-600'}`}
+          className={`text-lg mt-0.5 flex-shrink-0 transition-colors duration-200 cursor-pointer ${wished ? 'text-red-500' : 'text-gray-300 hover:text-gray-600 dark:hover:text-gray-200'}`}
           aria-label="Wishlist"
         >
           {wished ? '♥' : '♡'}
@@ -72,7 +50,7 @@ function NewArrivalCard({ product }) {
 
 function New() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-[#111111] transition-colors duration-300">
 
       <div className="flex flex-col md:flex-row w-full h-auto md:h-[95vh]">
 
@@ -84,7 +62,7 @@ function New() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
-          <div className="absolute bottom-10 left-8 text-white">
+          <div className="absolute bottom-10 left-8 text-white" style={{ animation: 'heroTextSlideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards' }}>
             <p className="font-michroma text-xs tracking-[0.3em] uppercase mb-3 opacity-80">New Arrivals — 2026</p>
             <h1 className="font-michroma text-3xl sm:text-4xl md:text-5xl leading-tight font-light">
               / Wear What
@@ -105,7 +83,7 @@ function New() {
           />
           <div className="absolute inset-0 bg-black/10" />
 
-          <div className="absolute top-8 right-8 text-right text-white">
+          <div className="absolute top-8 right-8 text-right text-white" style={{ animation: 'heroTextSlideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s forwards', opacity: 0 }}>
             <p className="font-montserrat text-[10px] tracking-[0.25em] uppercase opacity-70 mb-1">2026</p>
             <p className="font-michroma text-lg md:text-xl leading-tight font-semibold tracking-wider">
               SUMMER<br />COLLECTION
@@ -113,73 +91,89 @@ function New() {
           </div>
         </div>
 
+        <style>{`
+          @keyframes heroTextSlideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center px-7 py-4 font-michroma text-sm font-semibold italic gap-1 md:gap-0 border-b border-gray-100">
-        <p>Fresh Drops. Every Week.</p>
-        <p>Limited — Get Them Before They're Gone</p>
-      </div>
+      <Reveal>
+        <div className="flex flex-col md:flex-row justify-between items-center px-7 py-4 font-michroma text-sm font-semibold italic gap-1 md:gap-0 border-b border-gray-100 dark:border-gray-800 text-gray-900 dark:text-gray-200">
+          <p>Fresh Drops. Every Week.</p>
+          <p>Limited — Get Them Before They're Gone</p>
+        </div>
+      </Reveal>
 
       <div className="px-6 md:px-10 py-8 grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <div className="relative flex items-center justify-between rounded-2xl overflow-hidden bg-[#f5ede8] min-h-[300px]">
-          <div className="flex flex-col gap-3 px-8 py-8 max-w-[55%] z-10">
-            <h3 className="font-montserrat text-xl md:text-2xl font-semibold leading-snug text-gray-900">
-              Exclusive summer sale save more!
-            </h3>
-            <p className="font-montserrat text-xs text-gray-500 leading-relaxed">
-              Shop today and enjoy up to 40% off all outerwear and accessories!
-            </p>
-            <button className="self-start mt-1 flex items-center gap-2 border border-gray-800 rounded-full px-5 py-2 font-montserrat text-xs font-medium text-gray-800 hover:bg-gray-800 hover:text-white transition-colors duration-300 cursor-pointer">
-              Shop Comfort <span className="text-base leading-none">»</span>
-            </button>
+        <Reveal delay={0}>
+          <div className="relative flex items-center justify-between rounded-2xl overflow-hidden bg-[#f5ede8] dark:bg-[#2a1f1a] min-h-[300px]">
+            <div className="flex flex-col gap-3 px-8 py-8 max-w-[55%] z-10">
+              <h3 className="font-montserrat text-xl md:text-2xl font-semibold leading-snug text-gray-900 dark:text-gray-100">
+                Exclusive summer sale save more!
+              </h3>
+              <p className="font-montserrat text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                Shop today and enjoy up to 40% off all outerwear and accessories!
+              </p>
+              <button className="self-start mt-1 flex items-center gap-2 border border-gray-800 dark:border-gray-300 rounded-full px-5 py-2 font-montserrat text-xs font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-200 dark:hover:text-gray-900 transition-colors duration-300 cursor-pointer">
+                Shop Comfort <span className="text-base leading-none">»</span>
+              </button>
+            </div>
+            <div className="absolute right-0 top-0 h-full w-[48%]">
+              <img
+                src="https://images.unsplash.com/photo-1718985342149-7178154e0aee?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Winter Sale"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
           </div>
-          <div className="absolute right-0 top-0 h-full w-[48%]">
-            <img
-              src="https://images.unsplash.com/photo-1718985342149-7178154e0aee?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Winter Sale"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </div>
+        </Reveal>
 
-        <div className="relative flex items-center justify-between rounded-2xl overflow-hidden bg-[#e8eaf5] min-h-[200px]">
-          <div className="flex flex-col gap-3 px-8 py-8 max-w-[55%] z-10">
-            <h3 className="font-montserrat text-xl md:text-2xl font-semibold leading-snug text-gray-900">
-              Seasonal Sale – Up to 50% Off!
-            </h3>
-            <p className="font-montserrat text-xs text-gray-500 leading-relaxed">
-              Shop now and save up to 50% on selected styles.
-            </p>
-            <button className="self-start mt-1 flex items-center gap-2 border border-gray-800 rounded-full px-5 py-2 font-montserrat text-xs font-medium text-gray-800 hover:bg-gray-800 hover:text-white transition-colors duration-300 cursor-pointer">
-              Explore Fusion <span className="text-base leading-none">»</span>
-            </button>
+        <Reveal delay={0.1}>
+          <div className="relative flex items-center justify-between rounded-2xl overflow-hidden bg-[#e8eaf5] dark:bg-[#1a1b2e] min-h-[300px]">
+            <div className="flex flex-col gap-3 px-8 py-8 max-w-[55%] z-10">
+              <h3 className="font-montserrat text-xl md:text-2xl font-semibold leading-snug text-gray-900 dark:text-gray-100">
+                Seasonal Sale – Up to 50% Off!
+              </h3>
+              <p className="font-montserrat text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                Shop now and save up to 50% on selected styles.
+              </p>
+              <button className="self-start mt-1 flex items-center gap-2 border border-gray-800 dark:border-gray-300 rounded-full px-5 py-2 font-montserrat text-xs font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-200 dark:hover:text-gray-900 transition-colors duration-300 cursor-pointer">
+                Explore Fusion <span className="text-base leading-none">»</span>
+              </button>
+            </div>
+            <div className="absolute right-0 top-0 h-full w-[48%]">
+              <img
+                src="https://images.pexels.com/photos/10664739/pexels-photo-10664739.jpeg"
+                alt="Seasonal Sale"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
           </div>
-          <div className="absolute right-0 top-0 h-full w-[48%]">
-            <img
-              src="https://images.pexels.com/photos/10664739/pexels-photo-10664739.jpeg"
-              alt="Seasonal Sale"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </div>
+        </Reveal>
 
       </div>
 
-      <div className="px-6 md:px-10 pt-10 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
-        <div>
-          <p className="font-michroma text-xs tracking-[0.3em] text-gray-400 uppercase mb-1">2026 Season</p>
-          <h2 className="font-montserrat text-2xl md:text-4xl font-semibold">/ NEW ARRIVALS</h2>
+      <Reveal>
+        <div className="px-6 md:px-10 pt-10 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+          <div>
+            <p className="font-michroma text-xs tracking-[0.3em] text-gray-400 dark:text-gray-500 uppercase mb-1">2026 Season</p>
+            <h2 className="font-montserrat text-2xl md:text-4xl font-semibold text-gray-900 dark:text-white">/ NEW ARRIVALS</h2>
+          </div>
+          <p className="font-montserrat text-sm text-gray-400 dark:text-gray-500 italic">
+            {newArrivals.length-1} styles just landed
+          </p>
         </div>
-        <p className="font-montserrat text-sm text-gray-400 italic">
-          {newArrivals.length} styles just landed
-        </p>
-      </div>
+      </Reveal>
 
       <div className="px-6 md:px-10 pb-10">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-5 gap-y-10">
-          {newArrivals.slice(0, 4).map((product) => (
-            <NewArrivalCard key={product.id} product={product} />
+          {newArrivals.slice(0, 4).map((product, i) => (
+            <Reveal key={product.id} delay={i * 0.08}>
+              <NewArrivalCard product={product} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -194,12 +188,12 @@ function New() {
           />
         </div>
 
-        <div className="w-full md:w-1/2 flex flex-col justify-between bg-[#f7f7f5] px-6 md:px-10 py-6 gap-4">
+        <div className="w-full md:w-1/2 flex flex-col justify-between bg-[#f7f7f5] dark:bg-[#1a1a1a] px-6 md:px-10 py-6 gap-4">
 
           <div className="grid grid-cols-2 gap-4">
 
             <div className="flex flex-col gap-2 group cursor-pointer">
-              <div className="bg-white aspect-[3/4] flex items-center justify-center overflow-hidden">
+              <div className="bg-white dark:bg-[#222222] aspect-[3/4] flex items-center justify-center overflow-hidden">
                 <img
                   src="https://cdn.shopify.com/s/files/1/0030/2946/7203/files/Pia_Ivory_Packshot.jpg?v=1771002858&width=1920&crop=center"
                   alt="Pia Leather Bomber"
@@ -207,13 +201,13 @@ function New() {
                 />
               </div>
               <div>
-                <p className="font-montserrat text-xs text-gray-800 leading-snug">Pia Leather Bomber</p>
-                <p className="font-montserrat text-xs text-gray-500 mt-0.5">$1,500</p>
+                <p className="font-montserrat text-xs text-gray-800 dark:text-gray-200 leading-snug">Pia Leather Bomber</p>
+                <p className="font-montserrat text-xs text-gray-500 dark:text-gray-400 mt-0.5">$1,500</p>
               </div>
             </div>
 
             <div className="flex flex-col gap-2 group cursor-pointer">
-              <div className="bg-white aspect-[3/4] flex items-center justify-center overflow-hidden">
+              <div className="bg-white dark:bg-[#222222] aspect-[3/4] flex items-center justify-center overflow-hidden">
                 <img
                   src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=2160"
                   alt="Gold Rose Earrings"
@@ -221,22 +215,24 @@ function New() {
                 />
               </div>
               <div>
-                <p className="font-montserrat text-xs text-gray-800 leading-snug">Gold Rose Earrings</p>
-                <p className="font-montserrat text-xs text-gray-500 mt-0.5">$350</p>
+                <p className="font-montserrat text-xs text-gray-800 dark:text-gray-200 leading-snug">Gold Rose Earrings</p>
+                <p className="font-montserrat text-xs text-gray-500 dark:text-gray-400 mt-0.5">$350</p>
               </div>
             </div>
 
           </div>
 
-          <div className="flex flex-col gap-2 pt-4">
-            <p className="font-montserrat text-xs font-bold uppercase tracking-widest text-gray-900">Bold Shape</p>
-            <p className="font-montserrat text-xs text-gray-500 leading-relaxed max-w-sm">
-              The Pia Leather Bomber Jacket is a must-have for any wardrobe. Made with premium leather, it features a classic bomber silhouette with modern details.
-            </p>
-            <a href="#" className="font-montserrat text-xs text-gray-900 underline underline-offset-4 hover:text-black transition-colors duration-200 w-fit mt-1">
-              Shop Now
-            </a>
-          </div>
+          <Reveal delay={0.1}>
+            <div className="flex flex-col gap-2 pt-4">
+              <p className="font-montserrat text-xs font-bold uppercase tracking-widest text-gray-900 dark:text-gray-100">Bold Shape</p>
+              <p className="font-montserrat text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-sm">
+                The Pia Leather Bomber Jacket is a must-have for any wardrobe. Made with premium leather, it features a classic bomber silhouette with modern details.
+              </p>
+              <Link to="/product/217" className="font-montserrat text-xs text-gray-900 dark:text-gray-200 underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors duration-200 w-fit mt-1">
+                Shop Now
+              </Link>
+            </div>
+          </Reveal>
 
         </div>
       </div>
@@ -291,14 +287,14 @@ function New() {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 pb-24 md:pb-20 gap-6">
-          <p className="font-montserrat text-[11px] tracking-[0.3em] uppercase text-gray-400">The Atelier</p>
-          <h2 className="font-montserrat text-2xl md:text-3xl font-light leading-snug text-gray-900 max-w-xs">
+        <Reveal delay={0.1} className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 pb-24 md:pb-20 gap-6">
+          <p className="font-montserrat text-[11px] tracking-[0.3em] uppercase text-gray-400 dark:text-gray-500">The Atelier</p>
+          <h2 className="font-montserrat text-2xl md:text-3xl font-light leading-snug text-gray-900 dark:text-gray-100 max-w-xs">
             Designed with<br />
             <span className="font-semibold italic">restraint,</span><br />
             worn with intent.
           </h2>
-          <p className="font-montserrat text-[13px] text-gray-500 leading-[1.9] max-w-sm">
+          <p className="font-montserrat text-[13px] text-gray-500 dark:text-gray-400 leading-[1.9] max-w-sm">
             Every piece we carry begins with a single question — does it last?
             Not just in fabric and form, but in feeling. We curate garments built
             on quiet confidence: clean lines, considered materials, and a silhouette
@@ -307,23 +303,23 @@ function New() {
           </p>
           <NavLink
             to="/collections"
-            className="font-montserrat text-xs tracking-widest uppercase text-gray-800 underline underline-offset-4 hover:opacity-60 transition-opacity duration-200 w-fit"
+            className="font-montserrat text-xs tracking-widest uppercase text-gray-800 dark:text-gray-300 underline underline-offset-4 hover:opacity-60 transition-opacity duration-200 w-fit"
           >
             Explore the Collection
           </NavLink>
-        </div>
+        </Reveal>
 
-        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 px-8 py-4 border-t border-gray-300/60">
-          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">Seasonal Selection</span>
-          <span className="text-gray-300 text-xs">/</span>
-          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">Garments &amp; Objects</span>
-          <span className="text-gray-300 text-xs">/</span>
-          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500">2026</span>
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 px-8 py-4 border-t border-gray-300/60 dark:border-gray-700/60">
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500 dark:text-gray-500">Seasonal Selection</span>
+          <span className="text-gray-300 dark:text-gray-600 text-xs">/</span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500 dark:text-gray-500">Garments &amp; Objects</span>
+          <span className="text-gray-300 dark:text-gray-600 text-xs">/</span>
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-gray-500 dark:text-gray-500">2026</span>
         </div>
 
       </div>
 
-      <div className="relative w-full bg-white overflow-hidden select-none" style={{ height: '520px' }}>
+      <div className="relative w-full bg-white dark:bg-[#111111] overflow-hidden select-none" style={{ height: '520px' }}>
 
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '8%', left: '3%', width: '14vw', maxWidth: '205px', minWidth: '100px', aspectRatio: '4/3', transform: 'rotate(-2deg)' }}>
@@ -355,31 +351,31 @@ function New() {
           <img src="https://image.hm.com/assets/hm/98/7e/987e95023a84e70df49167612b24f507a1eb8acb.jpg?imwidth=400" alt="ig-6" className="w-full h-full object-cover object-center" />
         </div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center z-10">
+        <Reveal className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center z-10">
           <svg width="72" height="52" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="2"  y1="48" x2="16" y2="4"  stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="16" y1="4"  x2="30" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="8"  y1="30" x2="24" y2="30" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="40" y1="4"  x2="68" y2="4"  stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="68" y1="4"  x2="40" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="40" y1="48" x2="68" y2="48" stroke="#111" strokeWidth="2.5" strokeLinecap="round"/>
+            <line x1="2"  y1="48" x2="16" y2="4"  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-gray-900 dark:text-gray-200"/>
+            <line x1="16" y1="4"  x2="30" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-gray-900 dark:text-gray-200"/>
+            <line x1="8"  y1="30" x2="24" y2="30" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-gray-900 dark:text-gray-200"/>
+            <line x1="40" y1="4"  x2="68" y2="4"  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-gray-900 dark:text-gray-200"/>
+            <line x1="68" y1="4"  x2="40" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-gray-900 dark:text-gray-200"/>
+            <line x1="40" y1="48" x2="68" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-gray-900 dark:text-gray-200"/>
           </svg>
 
           <div className="flex items-center gap-3 mt-1">
-            <div className="w-10 h-px bg-gray-300" />
-            <p className="font-montserrat text-[10px] tracking-[0.32em] uppercase font-bold text-gray-900">Follow Our Instagram</p>
-            <div className="w-10 h-px bg-gray-300" />
+            <div className="w-10 h-px bg-gray-300 dark:bg-gray-600" />
+            <p className="font-montserrat text-[10px] tracking-[0.32em] uppercase font-bold text-gray-900 dark:text-gray-100">Follow Our Instagram</p>
+            <div className="w-10 h-px bg-gray-300 dark:bg-gray-600" />
           </div>
 
           <a
             href="https://www.instagram.com/"
             target="_blank"
             rel="noreferrer"
-            className="font-montserrat text-[10px] tracking-[0.25em] text-gray-400 hover:text-gray-800 transition-colors duration-300 uppercase"
+            className="font-montserrat text-[10px] tracking-[0.25em] text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300 uppercase"
           >
             @AZURE.STORE
           </a>
-        </div>
+        </Reveal>
 
       </div>
 

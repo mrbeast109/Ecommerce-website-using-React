@@ -1,5 +1,7 @@
 # AZURE
 
+**Live** - [https://azure-taupe.vercel.app/](https://azure-taupe.vercel.app/)
+
 AZURE is a frontend fashion e-commerce website built as a complete shopping experience for a premium clothing brand. The site covers product browsing, detailed product pages, a working cart, user accounts, and editorial-style pages for new arrivals and brand storytelling. The design leans toward clean layouts, strong typography, and smooth interactions rather than a generic storefront look.
 
 This is a client-side React application. Product data lives in a local JavaScript file, and user authentication is handled through the browser's local storage. There is no separate backend server.
