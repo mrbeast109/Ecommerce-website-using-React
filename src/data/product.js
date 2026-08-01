@@ -686,7 +686,6 @@ const products = [
       'https://image.hm.com/assets/hm/b6/7a/b67a5fbdff9145a7fa88ef0ed471e560bf8bc929.jpg?imwidth=2160',
       'https://image.hm.com/assets/hm/53/04/530478981d05158bd0a706b11515ad1674b1356b.jpg?imwidth=2160',
       'https://image.hm.com/assets/hm/5d/d5/5dd5f02bf5b338d4c4aebd6d395475fd7bbdc86a.jpg?imwidth=2160',
-      'https://image.hm.com/assets/hm/5d/d5/5dd5f02bf5b338d4c4aebd6d395475fd7bbdc86a.jpg?imwidth=2160',
       'https://image.hm.com/assets/hm/cc/d1/ccd163ee99ef2690ea91c9601f458d85fc528474.jpg?imwidth=2160',
     ],
   },
